@@ -109,4 +109,105 @@ CREATE TABLE Carrito
   , FOREIGN KEY(clienteId) REFERENCES Cliente(id)
   , FOREIGN KEY(productoId) REFERENCES Producto(id)
   );
+
+--Desde aqui las de Alejandro
+
+CREATE TABLE PromoEspecializada (
+    id INT PRIMARY KEY IDENTITY,
+    promoId INT FOREIGN KEY REFERENCES Promo(id),
+    productoId INT FOREIGN KEY REFERENCES Producto(id),
+    categoriaId INT,
+    marcaId INT
+);
+
+CREATE TABLE FacturaPromo (
+    facturaId INT FOREIGN KEY REFERENCES Factura(id),
+    promoId INT FOREIGN KEY REFERENCES Promo(id),
+    PRIMARY KEY (facturaId, promoId)
+);
+
+CREATE TABLE Sucursal (
+    id INT PRIMARY KEY IDENTITY,
+    nombre VARCHAR(100) NOT NULL,
+    direccion VARCHAR(255) NOT NULL,
+    telefono VARCHAR(15),
+    horaAbrir TIME,
+    horaCerrar TIME,
+    ciudadId INT FOREIGN KEY REFERENCES Ciudad(id)
+);
+
+CREATE TABLE Empleado (
+    id INT PRIMARY KEY IDENTITY,
+    CI VARCHAR(20) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    sexo CHAR(1) CHECK (sexo IN ('M', 'F')),
+    direccionCorta VARCHAR(255),
+    cargoId INT FOREIGN KEY REFERENCES Cargo(id),
+    empleadoSupervisorId INT FOREIGN KEY REFERENCES Empleado(id),
+    sucursalId INT FOREIGN KEY REFERENCES Sucursal(id),
+    fechaContrato DATE NOT NULL,
+    bonoFijoMensual DECIMAL(10, 2),
+    horaInicio TIME,
+    horaFin TIME,
+    cantidadDiasTrabajoPorSemana INT
+);
+
+CREATE TABLE Cargo (
+    id INT PRIMARY KEY IDENTITY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(255),
+    salarioBasePorHora DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE Pais (
+    id INT PRIMARY KEY IDENTITY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Estado (
+    id INT PRIMARY KEY IDENTITY,
+    nombre VARCHAR(100) NOT NULL,
+    paisId INT FOREIGN KEY REFERENCES Pais(id)
+);
+
+CREATE TABLE Ciudad (
+    id INT PRIMARY KEY IDENTITY,
+    nombre VARCHAR(100) NOT NULL,
+    estadoId INT FOREIGN KEY REFERENCES Estado(id)
+);
+
+CREATE TABLE Proveedor (
+    id INT PRIMARY KEY IDENTITY,
+    RIF VARCHAR(20) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    contacto VARCHAR(100),
+    telefono VARCHAR(15),
+    correo VARCHAR(100),
+    ciudadId INT FOREIGN KEY REFERENCES Ciudad(id)
+);
+
+CREATE TABLE Producto (
+    id INT PRIMARY KEY IDENTITY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(255),
+    precio DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE Inventario (
+    id INT PRIMARY KEY IDENTITY,
+    productoId INT FOREIGN KEY REFERENCES Producto(id),
+    cantidad INT NOT NULL
+);
+
+CREATE TABLE ProveedorProducto (
+    id INT PRIMARY KEY IDENTITY,
+    proveedorId INT FOREIGN KEY REFERENCES Proveedor(id),
+    productoId INT FOREIGN KEY REFERENCES Producto(id),
+    fechaCompra DATE NOT NULL,
+    precioPor DECIMAL(10, 2) NOT NULL,
+    cantidad INT NOT NULL
+);
+
+
  
