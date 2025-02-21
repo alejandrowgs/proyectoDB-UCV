@@ -112,6 +112,19 @@ CREATE TABLE Carrito
 
 --Desde aqui las de Alejandro
 
+CREATE TABLE Promo(
+id INT PRIMARY KEY IDENTITY,
+nombre VARCHAR(50),
+slogan VARCHAR(200),
+codigo INT,
+tipoDescuento CHAR CHECK (tipoDescuento IN ('Porcentaje', 'Fijo')),
+valorDescuento DECIMAL (10,2),
+fechaInicio DATE,
+fechaFin DATE,
+tipoPromocion CHAR CHECK (tipoPromocion IN ('Online', 'Fisica', 'Ambos'))
+);
+
+
 CREATE TABLE PromoEspecializada (
     id INT PRIMARY KEY IDENTITY,
     promoId INT FOREIGN KEY REFERENCES Promo(id),
@@ -210,4 +223,66 @@ CREATE TABLE ProveedorProducto (
 );
 
 
- 
+ CREATE TABLE TipoEnvio(
+id INT PRIMARY KEY IDENTITY,
+nombre VARCHAR(100) NOT NULL,
+TiempoEstimadoEntrega TIME,
+CostoEnvio DECIMAL (10,2)
+);
+
+CREATE TABLE Factura(
+id INT PRIMARY KEY IDENTITY,
+fechaEmicion DATE,
+subTotal DECIMAL (10,2),
+montoDescuentoTotal DECIMAL (10,2),
+porcentajeIVA DECIMAL (10,2),                 /* Se han tratado los porcentajes como decimales */
+montoIVA DECIMAL (10,2),                          
+montoTotal DECIMAL (10,2),
+clienteId  INT FOREIGN KEY REFERENCES Cliente(id)
+);
+
+CREATE TABLE OrdenOnline(
+id INT PRIMARY KEY IDENTITY,
+nroOrden INT NOT NULL,
+FechaCreacion DATE,
+clienteId  INT FOREIGN KEY REFERENCES Cliente(id),
+tipoEnvioId INT FOREIGN KEY REFERENCES TipoEnvio(id),
+facturaId INT FOREIGN KEY REFERENCES Factura(id)
+);
+
+CREATE TABLE OrdenDetalle (
+id INT PRIMARY KEY IDENTITY,
+cantidad INT,
+/* precioPor       ---*/
+ordenId INT FOREIGN KEY REFERENCES OrdenOnline(id),
+productoId INT FOREIGN KEY REFERENCES Producto (id)
+);
+
+CREATE TABLE VentaFisica(
+facturaId INT FOREIGN KEY REFERENCES Factura (id),
+sucursalId INT FOREIGN KEY REFERENCES Sucursal (id),
+empleadoId INT FOREIGN KEY REFERENCES Empleado (id)
+PRIMARY KEY (facturaId, sucursalId, empleadoId)
+);
+
+CREATE TABLE FacturaDetalle (
+id INT PRIMARY KEY IDENTITY,
+cantidad INT,
+/* PrecioPor        -----*/
+facturaId INT FOREIGN KEY REFERENCES Factura (id),
+productoId INT FOREIGN KEY REFERENCES Producto (id)
+);
+
+CREATE TABLE FormaPago(
+id INT PRIMARY KEY IDENTITY,
+nombre VARCHAR(50),
+descripcion VARCHAR(500)
+);
+
+CREATE TABLE Pago(
+facturaId INT FOREIGN KEY REFERENCES Factura (id),
+nroTransaccion INT,
+metodoPagoId INT FOREIGN KEY REFERENCES FormaPago(id),
+PRIMARY KEY (facturaId)
+);
+
