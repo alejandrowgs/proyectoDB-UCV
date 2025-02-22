@@ -95,11 +95,11 @@ CREATE TABLE Estado
   );
 
 CREATE TABLE Ciudad
-  ( id INT NOT NULL IDENTITY
-  , nombre VARCHAR (100) NOT NULL
-  , PRIMARY KEY (id)
-  , estadoId INT FOREIGN KEY REFERENCES Estado(id)
-  ); 
+	( id INT NOT NULL IDENTITY
+	, nombre VARCHAR (100) NOT NULL
+	, PRIMARY KEY (id)
+	, estadoId INT FOREIGN KEY REFERENCES Estado(id)
+	); 
 
 CREATE TABLE Promo
   ( id INT PRIMARY KEY NOT NULL IDENTITY
@@ -134,7 +134,7 @@ CREATE TABLE Sucursal
 CREATE TABLE Cargo 
   ( id INT PRIMARY KEY NOT NULL IDENTITY
   , nombre VARCHAR(100) NOT NULL
-  ,  descripcion VARCHAR(255)
+  , descripcion VARCHAR(255)
   , salarioBasePorHora DECIMAL(10, 2) NOT NULL
   );
 
@@ -210,8 +210,8 @@ CREATE TABLE Factura
   , subTotal DECIMAL (10,2)
   , montoDescuentoTotal DECIMAL (10,2)
   , porcentajeIVA INT                 /* Se tratan los porcentajes como enteros >> 30 representa 30% */
-  ,  montoIVA DECIMAL (10,2)                        
-  ,  montoTotal DECIMAL (10,2)
+  , montoIVA DECIMAL (10,2)                        
+  , montoTotal DECIMAL (10,2)
   );
 
 CREATE TABLE FacturaPromo 
