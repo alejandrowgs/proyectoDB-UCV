@@ -16,7 +16,7 @@ END;
 
 
 --montoTotal ((subTotal - montoDescuentoTotal) + montoIVA + costoEnvio). 
---a.4 
+--a.5
 
 CREATE FUNCTION montoTotal()      
 RETURNS DECIMAL(10,2)
