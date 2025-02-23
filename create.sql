@@ -179,7 +179,7 @@ CREATE TABLE ClienteDireccion
   , ciudadId INT
   , PRIMARY KEY (id)
   , FOREIGN KEY(clienteId) REFERENCES Cliente(id)
-  , FOREIGN KEY(ciudadId) REFERENCES ciudad(id)         
+  , FOREIGN KEY(ciudadId) REFERENCES Ciudad(id)         
   );
   
 CREATE TABLE HistorialClienteProducto
