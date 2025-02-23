@@ -1,27 +1,32 @@
-/*Drop TABLE IF EXISTS Cliente;
-Drop TABLE IF EXISTS Categoria;
-Drop TABLE IF EXISTS ProductoRecomendadoParaProducto;
-Drop TABLE IF EXISTS ProductoRecomendadoParaCliente;
-Drop TaBLE IF EXISTS Ciudad;
-Drop TaBLE IF EXISTS Estado;
-Drop TaBLE IF EXISTS ClienteDireccion
-Drop TaBLE IF EXISTS HistorialClienteProducto
-Drop TaBLE IF EXISTS Carrito
-Drop TaBLE IF EXISTS PromoEspecializada;
-Drop TaBLE IF EXISTS FacturaPromo;
-Drop TaBLE IF EXISTS Sucursal;
-Drop TaBLE IF EXISTS Empleado;
-Drop TaBLE IF EXISTS Cargo;
-Drop TaBLE IF EXISTS Pais;
-Drop TaBLE IF EXISTS Proveedor;
-Drop TaBLE IF EXISTS Inventario;
-Drop TaBLE IF EXISTS ProveedorProducto;
-Drop TABLE IF EXISTS Cliente;
-Drop TABLE IF EXISTS Categoria;
-Drop TABLE IF EXISTS Marca;
-Drop TABLE IF EXISTS Producto;
---Drop TaBLE IF EXISTS */
-
+DROP TABLE IF EXISTS FacturaPromo;
+DROP TABLE IF EXISTS FacturaDetalle;
+DROP TABLE IF EXISTS VentaFisica;
+DROP TABLE IF EXISTS OrdenDetalle;
+DROP TABLE IF EXISTS OrdenOnline;
+DROP TABLE IF EXISTS Pago;
+DROP TABLE IF EXISTS ProveedorProducto;
+DROP TABLE IF EXISTS Inventario;
+DROP TABLE IF EXISTS HistorialClienteProducto;
+DROP TABLE IF EXISTS Carrito;
+DROP TABLE IF EXISTS ClienteDireccion;
+DROP TABLE IF EXISTS PromoEspecializada;
+DROP TABLE IF EXISTS ProductoRecomendadoParaCliente;
+DROP TABLE IF EXISTS ProductoRecomendadoParaProducto;
+DROP TABLE IF EXISTS Producto;
+DROP TABLE IF EXISTS Marca;
+DROP TABLE IF EXISTS Categoria;
+DROP TABLE IF EXISTS Proveedor;
+DROP TABLE IF EXISTS Empleado;
+DROP TABLE IF EXISTS Cargo;
+DROP TABLE IF EXISTS Sucursal;
+DROP TABLE IF EXISTS Ciudad;
+DROP TABLE IF EXISTS Estado;
+DROP TABLE IF EXISTS Pais;
+DROP TABLE IF EXISTS FormaPago;
+DROP TABLE IF EXISTS Factura;
+DROP TABLE IF EXISTS Promo;
+DROP TABLE IF EXISTS TipoEnvio;
+DROP TABLE IF EXISTS Cliente;
 
 CREATE TABLE Pais 
   ( id INT PRIMARY KEY NOT NULL IDENTITY
@@ -39,21 +44,21 @@ CREATE TABLE Cliente
   , fechaRegistro DATE
   , PRIMARY KEY (id)
   );
- 
+
 CREATE TABLE Categoria
   ( id INT NOT NULL IDENTITY(1,1)
   , nombre VARCHAR (100) NOT NULL
   , descripcion VARCHAR (100) NOT NULL
   , PRIMARY KEY (id)
   );
-  
+
 CREATE TABLE Marca
   ( id INT NOT NULL IDENTITY(1,1)
   , nombre VARCHAR (100) NOT NULL
   , descripcion VARCHAR (100) NOT NULL
   , PRIMARY KEY (id)
   );
-  
+
 CREATE TABLE Producto 
   ( id INT NOT NULL IDENTITY(1,1)
   , nombre VARCHAR (100) NOT NULL
@@ -68,7 +73,7 @@ CREATE TABLE Producto
   , FOREIGN KEY(categoriaId) REFERENCES Categoria(id)
   , FOREIGN KEY(marcaId) REFERENCES Marca(id)        
   );
-  
+
 CREATE TABLE ProductoRecomendadoParaProducto 
   ( productoId INT
   , productoRecomendadoId INT
@@ -77,7 +82,7 @@ CREATE TABLE ProductoRecomendadoParaProducto
   , FOREIGN KEY(productoId) REFERENCES Producto(id)
   , FOREIGN KEY(productoRecomendadoId) REFERENCES Producto(id)        
   );
-  
+
 CREATE TABLE ProductoRecomendadoParaCliente
   ( clienteId INT
   , productoRecomendadoId INT
@@ -87,7 +92,7 @@ CREATE TABLE ProductoRecomendadoParaCliente
   , FOREIGN KEY(clienteId) REFERENCES Cliente(id)
   , FOREIGN KEY(productoRecomendadoId) REFERENCES Producto(id)        
   );
-  
+
 CREATE TABLE Estado 
   ( id INT PRIMARY KEY NOT NULL IDENTITY
   , nombre VARCHAR(100) NOT NULL
@@ -95,11 +100,11 @@ CREATE TABLE Estado
   );
 
 CREATE TABLE Ciudad
-	( id INT NOT NULL IDENTITY
-	, nombre VARCHAR (100) NOT NULL
-	, PRIMARY KEY (id)
-	, estadoId INT FOREIGN KEY REFERENCES Estado(id)
-	); 
+  ( id INT NOT NULL IDENTITY
+  , nombre VARCHAR (100) NOT NULL
+  , PRIMARY KEY (id)
+  , estadoId INT FOREIGN KEY REFERENCES Estado(id)
+  ); 
 
 CREATE TABLE Promo
   ( id INT PRIMARY KEY NOT NULL IDENTITY
@@ -118,7 +123,7 @@ CREATE TABLE PromoEspecializada
   , promoId INT FOREIGN KEY REFERENCES Promo(id)
   , productoId INT FOREIGN KEY REFERENCES Producto(id)
   , categoriaId INT FOREIGN KEY REFERENCES Categoria(id)
-  , marcaId INT FOREIGN KEY REFERENCES marca(id)
+  , marcaId INT FOREIGN KEY REFERENCES Marca(id)
   );
 
 CREATE TABLE Sucursal 
@@ -181,7 +186,7 @@ CREATE TABLE ClienteDireccion
   , FOREIGN KEY(clienteId) REFERENCES Cliente(id)
   , FOREIGN KEY(ciudadId) REFERENCES Ciudad(id)         
   );
-  
+
 CREATE TABLE HistorialClienteProducto
   ( clienteId INT
   , productoId INT
@@ -191,7 +196,7 @@ CREATE TABLE HistorialClienteProducto
   , FOREIGN KEY(clienteId) REFERENCES Cliente(id)
   , FOREIGN KEY(productoId) REFERENCES Producto(id)
   );
-  
+
 CREATE TABLE Carrito
   ( clienteId INT
   , productoId INT
@@ -231,8 +236,8 @@ CREATE TABLE ProveedorProducto
 
 CREATE TABLE TipoEnvio
   ( id INT PRIMARY KEY NOT NULL IDENTITY
-  , nombre VARCHAR(100) NOT NULL
-  , tiempoEstimadoEntrega TIME
+  , nombreEnvio VARCHAR(100) NOT NULL
+  , tiempoEstimadoEntrega INT
   , costoEnvio DECIMAL (10,2)
   );
 
@@ -268,11 +273,13 @@ CREATE TABLE FacturaDetalle
   , precioPor DECIMAL(10, 2) NOT NULL	
   );
 
+
 CREATE TABLE FormaPago
   ( id INT PRIMARY KEY NOT NULL IDENTITY
   , nombre VARCHAR(100)
   , descripcion VARCHAR(100)
   );
+
 
 CREATE TABLE Pago
   ( facturaId INT PRIMARY KEY
@@ -281,5 +288,3 @@ CREATE TABLE Pago
   , FOREIGN KEY (facturaId) REFERENCES Factura(id)
   , FOREIGN KEY (metodoPagoId) REFERENCES FormaPago(id)
   );
-
- 
