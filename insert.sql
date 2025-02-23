@@ -42,11 +42,11 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 --TipoEnvio
 SET IDENTITY_INSERT TipoEnvio ON;
 INSERT INTO TipoEnvio (id, nombreEnvio, tiempoEstimadoEntrega, costoEnvio) VALUES
-(1, 'Envio inmediato', '01:00:00', 50.00),
-(2, 'Mismo dia', '04:00:00', 30.00),
-(3, 'Al dia siguiente', '23:00:00', 20.00),
-(4, 'Semana siguiente', '168:00:00', 6.00),
-(5, 'Envio estandar', '72:00:00', 15.00);
+(1, 'Envio inmediato', 1, 50.00),
+(2, 'Mismo dia', 4, 30.00),
+(3, 'Al dia siguiente', 23, 20.00),
+(4, 'Semana siguiente', 168, 6.00),
+(5, 'Envio estandar', 72, 15.00);
 SET IDENTITY_INSERT TipoEnvio OFF;
 
 --FormaPago
