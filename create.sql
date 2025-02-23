@@ -237,7 +237,7 @@ CREATE TABLE ProveedorProducto
 CREATE TABLE TipoEnvio
   ( id INT PRIMARY KEY NOT NULL IDENTITY
   , nombreEnvio VARCHAR(100) NOT NULL
-  , tiempoEstimadoEntrega INT
+  , tiempoEstimadoEntrega TIME
   , costoEnvio DECIMAL (10,2)
   );
 
