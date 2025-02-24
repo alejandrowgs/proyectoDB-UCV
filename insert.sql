@@ -1,4 +1,3 @@
- 
 -- Insert
 
 INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRegistro) VALUES
@@ -36,10 +35,9 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (14442135,'Sofia','Medida','sm@yahoo.es','F','1976/02/12','2024/08/03'),
 (26854456,'Marcela','Ortiz','m.ortiz@yahoo.es','F','1996/04/03','2022/11/18'),
 (7546851,'Isabel','Morales','isam@yahoo.es','F','1969/04/19','2019/11/09'),
-(12324530,'Braulio','Carmona','brauc@yahoo.es','M','2002/05/03','2024/08/03'),
+(12324530,'Braulio','Carmona','brauc@yahoo.es','M','2002/05/03','2024/08/03');
 
---SELECT * From Cliente;	
---TipoEnvio
+--TipoEnvio      tiempoEstimadoEntrega*
 SET IDENTITY_INSERT TipoEnvio ON;
 INSERT INTO TipoEnvio (id, nombreEnvio, tiempoEstimadoEntrega, costoEnvio) VALUES
 (1, 'Envio inmediato', 1, 50.00),
@@ -314,3 +312,12 @@ INSERT INTO Ciudad (id, nombre, estadoId) VALUES
 (64, 'Sanare', 25),
 (65, 'Cubiro', 25);
 SET IDENTITY_INSERT Ciudad OFF;
+
+--SELECT * From Cliente;
+--SELECT * From TipoEnvio;
+--SELECT * From FormaPago;
+--SELECT * From Cargo;
+--SELECT * From Marca;
+--SELECT * From Categoria;
+--SELECT * From Pais;
+--SELECT * From Ciudad;
