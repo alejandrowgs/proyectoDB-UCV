@@ -1,7 +1,10 @@
 *Querys*
 
-A - B - C - D - E - F -G -H - I - J 
+A - B - C - E - F -G -H - I - J 
 
+*HECHAS*
+
+D
 
 *Functions Por hacer*
 
@@ -32,3 +35,5 @@ compararlos.
 
 
 *Triggers Por hacer*
+
+A - B -C - D - E
