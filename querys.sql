@@ -15,7 +15,7 @@ trabajados
 SELECT T1.*
 FROM(SELECT E.CI, E.nombre, E.apellido, E.sexo, C.nombre, C.salarioBasePorHora, E.bonoFijoMensual, 
       (E.bonoFijoMensual + C.salarioBasePorHora) as totalObtenidoPorMes, 
-      (DATEDIFF(month,fechaContrato, curDate())/30.4)* T1.totalObtenidoPorMes as montoTotalDesdeSuInicio    --**
+      (DATEDIFF(month, E.fechaContrato, curDate())/30.4)* T1.totalObtenidoPorMes as montoTotalDesdeSuInicio    --**
     FROM Empleado E, Cargo C 
     ) as T1
 
