@@ -1,4 +1,4 @@
-*Querys*      **D - E - G poseen subquerys
+*Querys*      D - E - G poseen subquerys
 
 A - B - C - E - F -G -H - I - J   
 
