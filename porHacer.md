@@ -26,10 +26,6 @@ a2. montoTotal ( (subTotal - montoDescuentoTotal) + montoIVA + costoEnvio).
 
 *Procedures*
 
--a. Simular toda una compra online de lo que esté en el carrito dado un cliente
-
--b. Simular compra a proveedor dados un proveedor, producto, precio y cantidad
-
 -c. Crear factura física dado un cliente y un empleado (esto creará también la relación VentaFisica)  
 
 -d. Agregar producto a factura física dada una factura, producto, cantidad y precio 
@@ -38,6 +34,10 @@ a2. montoTotal ( (subTotal - montoDescuentoTotal) + montoIVA + costoEnvio).
 ingreso desde 3 meses antes del inicio de la promo y también imprimir los mismos datos durante el 
 período de duración de la promo, junto con el porcentaje de incremento o decremento al 
 compararlos.  
+
+*HECHOS*
+
+A - B
 
 *Triggers*
 
