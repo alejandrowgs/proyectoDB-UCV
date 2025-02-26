@@ -1,3 +1,23 @@
+/*C.  Obtener  el  nombre  del  producto,  la  categoría  y  la  marca  de  los  productos  que
+han  sido recomendados para clientes que han comprado al menos una vez en el último mes, 
+y que además están en el carrito de compras de algún otro cliente.
+*/
+
+SELECT P.nombre, Cat.nombre, M.nombre
+FROM Producto P, Categoria Cat, Marca M, ProductoRecomendadoParaCliente PRC, HistorialClienteProducto HCP, Cliente Clie  
+--** Clie sera el que compró productos - Cli sera el cliente con el carrito - Cl sera la tabla general
+
+WHERE P.categoriaId = Cat.id
+AND P.marcaId = M.id
+
+WHERE Clie.id = HCP.clienteId
+AND HCP.fecha = MONTH(curDate())
+AND HCP.productoId = PE.productoRecomendadoId       --Prod de todos los clientes que han comprando en el ultimo mes
+AND HCP.productoId IN (SELECT Carr.productoId
+                       FROM Carrito Carr, Cliente Cl
+                       WHERE Clie.id != Cl.id
+                       AND HCP.productoId = Carr.productoId
+                      )
 
 /*D. 
 Queremos  un  reporte  completo  de  empleados  que  cumplen  con  al  menos  una  de  estas 
@@ -43,3 +63,5 @@ WHERE E.id IN( SELECT E.id
                                     ORDER BY C.salarioBasePorHora DESC)
                         
             )
+
+
