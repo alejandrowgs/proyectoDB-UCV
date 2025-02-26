@@ -9,8 +9,7 @@ FROM Producto P, Categoria Cat, Marca M, ProductoRecomendadoParaCliente PRC, His
 
 WHERE P.categoriaId = Cat.id
 AND P.marcaId = M.id
-
-WHERE Clie.id = HCP.clienteId
+AND Clie.id = HCP.clienteId
 AND HCP.fecha = MONTH(curDate())
 AND HCP.productoId = PE.productoRecomendadoId       --Prod de todos los clientes que han comprando en el ultimo mes
 AND HCP.productoId IN (SELECT Carr.productoId
