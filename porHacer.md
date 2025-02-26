@@ -1,10 +1,10 @@
 *Querys*      D - E - G poseen subquerys
 
-A - B - C - E - F -G -H - I - J   
+A - B - E -G -H - I - J   
 
 *HECHAS*
 
-D
+C - D - F
 
 *Functions Por hacer*
 
