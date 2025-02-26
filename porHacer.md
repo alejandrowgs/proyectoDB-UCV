@@ -9,9 +9,10 @@ C - D - F
 *Functions Por hacer*
 
 a. Funciones individuales para obtener cada uno de los valores numéricos de Factura: 
--subTotal  (antes  de  promos  e  impuestos)
--montoDescuentoTotal (todo lo que se descontará en caso de que haya promos)
--montoIVA (total de impuestos  a  pagar  por  productos  no  exentos,  luego  de  aplicar  promo,  no  se  incluyen  envíos)   
+
+a.2 subTotal  (antes  de  promos  e  impuestos)
+a.3 montoDescuentoTotal (todo lo que se descontará en caso de que haya promos)
+a.4 montoIVA (total de impuestos  a  pagar  por  productos  no  exentos,  luego  de  aplicar  promo,  no  se  incluyen  envíos)   
 
 b. Verifica si una promo es válida o no dada una factura (la fechaFin no ha pasado y el 
 tipoPromoción coincide con el tipo de compra online o física).  
@@ -21,8 +22,7 @@ tipoPromoción coincide con el tipo de compra online o física).
 a1. costoEnvio (dada  una  orden,  obtener  el  costo  del  envío)  
 a2. montoTotal ( (subTotal - montoDescuentoTotal) + montoIVA + costoEnvio).  
 
-
-*Procedures Por hacer*
+*Procedures*
 
 -a. Simular toda una compra online de lo que esté en el carrito dado un cliente
 -b. Simular compra a proveedor dados un proveedor, producto, precio y cantidad
