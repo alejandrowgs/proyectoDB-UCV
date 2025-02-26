@@ -1,6 +1,6 @@
-*Querys*
+*Querys*      **D - E - G poseen subquerys
 
-A - B - C - E - F -G -H - I - J 
+A - B - C - E - F -G -H - I - J   
 
 *HECHAS*
 
