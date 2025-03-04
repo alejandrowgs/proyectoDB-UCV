@@ -62,7 +62,7 @@ CREATE TABLE Marca
 CREATE TABLE Producto 
   ( id INT NOT NULL IDENTITY(1,1)
   , nombre VARCHAR (100) NOT NULL
-  , codigoBarra VARCHAR(20) NOT NULL 
+  , codigoBarra VARCHAR(20) NOT NULL  
   , descripcion VARCHAR (100) NOT NULL
   , tipoPrecio VARCHAR(20) CHECK (tipoPrecio IN ('PorUnidad', 'PorPesoKg'))                        
   , precioPor DECIMAL(10, 2)                           
@@ -131,8 +131,8 @@ CREATE TABLE Sucursal
   , nombre VARCHAR(100) NOT NULL
   , direccion VARCHAR(255) NOT NULL
   , telefono VARCHAR(20)
-  , horaAbrir TIME
-  , horaCerrar TIME
+  , horaAbrir INT
+  , horaCerrar INT
   , ciudadId INT FOREIGN KEY REFERENCES Ciudad(id)
   );
 
@@ -155,8 +155,8 @@ CREATE TABLE Empleado
   , sucursalId INT FOREIGN KEY REFERENCES Sucursal(id)
   , fechaContrato DATE NOT NULL
   , bonoFijoMensual DECIMAL(10, 2)
-  , horaInicio TIME
-  , horaFin TIME
+  , horaInicio INT
+  , horaFin INT
   , cantidadDiasTrabajoPorSemana INT
   );
 
@@ -273,13 +273,11 @@ CREATE TABLE FacturaDetalle
   , precioPor DECIMAL(10, 2) NOT NULL	
   );
 
-
 CREATE TABLE FormaPago
   ( id INT PRIMARY KEY NOT NULL IDENTITY
   , nombre VARCHAR(100)
   , descripcion VARCHAR(100)
   );
-
 
 CREATE TABLE Pago
   ( facturaId INT PRIMARY KEY
