@@ -37,7 +37,7 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (7546851,'Isabel','Morales','isam@yahoo.es','F','1969/04/19','2019/11/09'),
 (12324530,'Braulio','Carmona','brauc@yahoo.es','M','2002/05/03','2024/08/03');
 
-INSERT Promo(nombre, slogan, codigo, tipoDescuento, valorDescuento, fechaInicio, fechaFin, tipoPromocion) VALUES
+INSERT INTO Promo(nombre, slogan, codigo, tipoDescuento, valorDescuento, fechaInicio, fechaFin, tipoPromocion) VALUES
 --tipoDescuento : %
 ('Black Friday sales','Promociones alocadas' , 1001, 'Porcentaje', 75, '2024/11/05', '2024/11/20', 'Ambos'),
 ('Deporte EXtremo', 'Equípate para la aventura con descuentos que te impulsarán', 2002, 'Porcentaje', 25, '2024/05/15', '2024/08/15', 'Fisica'),
