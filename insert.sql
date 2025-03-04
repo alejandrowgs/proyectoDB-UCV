@@ -84,21 +84,17 @@ INSERT INTO Promo(nombre, slogan, codigo, tipoDescuento, valorDescuento, fechaIn
 
 --SELECT * FROM Promo;
 
---ERROR En insert Sucursal: 
--- The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Sucursal__ciudad__76E18148". 
---The conflict occurred in database "master", table "dbo.Ciudad", column 'id'.
-
 INSERT INTO Sucursal (nombre, direccion, telefono, horaAbrir, horaCerrar, ciudadId) VALUES
-('Los Palos Grandes', '3ra. Av. de Los Palos Grandes entre 2da. y 3ra. Transversal. Edf. Versalles.', 02122457876, 00, 23, 1080),
-('La India', 'Urbanización La Paz. Cruce de la Av. O"Higgins con Calle Junín.',02123145678, 00, 23, 1020),
-('Express Santa Eduvigis','Av. Rómulo Gallegos 2da Av. Santa Eduvigis, detrás de la estación del metro miranda.', 02127544661, 00, 23, 1030),
-('Macaracuay','Av Mara con Calle San Jose, C.C. Macaracuay Plaza, Nivel PB.', 02121457531, 00, 23, 1071),
-('Express Boleita Norte','Av. Principal Boleíta Norte. Centro Comercial Parque Residencial del Este Nivel Comercio 2. Municipio Sucre – Estado Miranda.', 02129841322, 00, 23, 1071),
-('Express Los Ruices','Avenida Francisco de Miranda con Calle A y B, Torre Cinética (antiguo Centro Boleíta), Locales A y D, Urb. Los Ruices.', 02124451221, 00, 23, 1071),
-('Express Caurimare','Av. Principal de Caurimare con Calle “D”. Parcela J 1B, Urbanizacion Caurimare. El Cafetal, Municipio Baruta.', 02126648571, 00, 23, 1061),
-('Express Chuao','Av. Araure con calle Las Lomas, C.C. Chuao, locales del 1 al 5, Urb. Chuao.', 02123124559,00, 23 ,1061),
-('Express El Paraiso','Urbanización El Paraíso. Av. José Antonio Paez con Av. "H".', 02122168853 ,00 ,23 ,1020),
-('Express La Urbina', 'Calle 5 con Calle 7.Parcela B2-15-16. La Urbina Sur.', 02123511783, 00 ,23 , 1073); 
+('Los Palos Grandes', '3ra. Av. de Los Palos Grandes entre 2da. y 3ra. Transversal. Edf. Versalles.', 02122457876, 00, 23, 47),
+('La India', 'Urbanización La Paz. Cruce de la Av. O"Higgins con Calle Junín.',02123145678, 00, 23, 47),
+('Express Santa Eduvigis','Av. Rómulo Gallegos 2da Av. Santa Eduvigis, detrás de la estación del metro miranda.', 02127544661, 00, 23, 47),
+('Macaracuay','Av Mara con Calle San Jose, C.C. Macaracuay Plaza, Nivel PB.', 02121457531, 00, 23, 47),
+('Express Boleita Norte','Av. Principal Boleíta Norte. Centro Comercial Parque Residencial del Este Nivel Comercio 2. Municipio Sucre – Estado Miranda.', 02129841322, 00, 23, 47),
+('Express Los Ruices','Avenida Francisco de Miranda con Calle A y B, Torre Cinética (antiguo Centro Boleíta), Locales A y D, Urb. Los Ruices.', 02124451221, 00, 23, 47),
+('Express Caurimare','Av. Principal de Caurimare con Calle “D”. Parcela J 1B, Urbanizacion Caurimare. El Cafetal, Municipio Baruta.', 02126648571, 00, 23, 47),
+('Express Chuao','Av. Araure con calle Las Lomas, C.C. Chuao, locales del 1 al 5, Urb. Chuao.', 02123124559,00, 23 ,47),
+('Express El Paraiso','Urbanización El Paraíso. Av. José Antonio Paez con Av. "H".', 02122168853 ,00 ,23 ,47),
+('Express La Urbina', 'Calle 5 con Calle 7.Parcela B2-15-16. La Urbina Sur.', 02123511783, 00 ,23 , 49); 
 
 --SELECT * FROM Sucursal;
 
