@@ -37,6 +37,71 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (7546851,'Isabel','Morales','isam@yahoo.es','F','1969/04/19','2019/11/09'),
 (12324530,'Braulio','Carmona','brauc@yahoo.es','M','2002/05/03','2024/08/03');
 
+INSERT Promo(nombre, slogan, codigo, tipoDescuento, valorDescuento, fechaInicio, fechaFin, tipoPromocion) VALUES
+--tipoDescuento : %
+('Black Friday sales','Promociones alocadas' , 1001, 'Porcentaje', 75, '2024/11/05', '2024/11/20', 'Ambos'),
+('Deporte EXtremo', 'Equípate para la aventura con descuentos que te impulsarán', 2002, 'Porcentaje', 25, '2024/05/15', '2024/08/15', 'Fisica'),
+('Precio especial','Precios Especiales', 3003, 'Porcentaje', 15, '2024/02/20', '2024/02/21', 'Fisica'),
+('2x1', 'Compra dos, por el precio de uno', 4004, 'Porcentaje', 50, '2025/01/30', '2025/01/30', 'Fisica'),
+('Regalo sorpresa', 'Compra y descubre tu regalo', 5005, 'Porcentaje', 10, '2024/12/21', '2024/12/24', 'Fisica'),
+('Rebajas Explosivas', '¡Precios que hacen boom en tu bolsillo!', 6006, 'Porcentaje', 60, '2024/02/07', '2024/02/09', 'Fisica'),
+('Precio de Remate', 'Precios que no volveran.', 7007, 'Porcentaje', 25, '2023/03/21', '2023/03/22', 'Fisica'),
+('Precio de Locura', '"¡Precios tan bajos que te harán dudar!', 8008, 'Porcentaje', 75, '2025/01/01', '2025/01/06','Ambos'),
+('Saving Pack', 'Todo lo que necesitas en un solo paquete, ¡y al mejor precio!', 9009, 'Porcentaje', 40, '2024/07/01', '2025/09/01', 'Fisica'),
+('Oferta Relámpago', '¡Solo por hoy!', 1010, 'Porcentaje', 30, '2025/01/15', '2025/01/17', 'Fisica'),
+('Promoción Exclusiva', 'Una oferta solo para ti, ¡no la dejes escapar!', 1111, 'Porcentaje', 15, '2024/10/30', '2024/10/31', 'Online'),
+('Oferta del Día', '¡No te la pierdas!', 1212, 'Porcentaje', 10, '2025/03/03', '2025/03/03', 'Ambos'),
+('Oferta Nocturna', 'Descuentos para los noctámbulos', 1313, 'Porcentaje', 20, '2025/01/01', '2025/03/01', 'Fisica'),
+('Precio de Fin De', 'Para quienes disfrutan el fin de semana al extremo', 1414, 'Porcentaje', 20, '2024/11/01', '2024/11/03', 'Fisica'),
+('Verano EN GaMa', '¡Llegó el Verano!', 1515, 'Porcentaje', 35, '2025/06/01', '2025/08/31', 'Fisica'),
+('Solo en GaMa', 'Productos exclusivos', 1616, 'Porcentaje', 15, '2025/04/01', '2025/04/19', 'Online'),
+('Belleza Radiante', 'Luce radiante sin gastar una fortuna',1717, 'Porcentaje', 15, '2025/06/01', '2025/06/08', 'Ambos'),
+('Promoción de Aniversario', 'Descuentos especiales por nuestro aniversario.', 1818, 'Porcentaje', 15, '2025/05/15', '2025/05/20', 'Fisica'),
+('Cumpleaños AlOcaDo', 'Celebra tu cumpleaños, con tu supermercado de confianza', 1919, 'Porcentaje', 15, '2025/07/25', '2025/08/25', 'Fisica'),
+('Club Ahorro', 'Únete y descubre un mundo de descuentos y promociones especiales.', 2020, 'Porcentaje', 10, '2024/10/01', '2025/10/01', 'Online'),
+
+--tipoDescuento : Fijo
+('Gold Membresy', 'Beneficios exclusivos para miembros dorados', 2121, 'Fijo', 25, '2025/09/15', '2025/09/30', 'Fisica'),
+('Navidad en GaMa', 'Rebajas de fin de año', 2222, 'Fijo', 30, '2024/12/21', '2025/01/06', 'Fisica'),
+('Salud y Bienestar', '¡Descuentos para cuidar de ti!', 2323, 'Fijo', 15, '2025/03/01', '2025/04/01', 'Fisica'),
+('Juguetes Felices', 'La alegría de los niños al mejor precio', 2424, 'Fijo', 20, '2025/07/01', '2025/07/31', 'Fisica'),
+('Libros y Cultura', 'Enriquece tu mente; Nosotros hacemos el resto', 2525, 'Fijo', 10, '2024/05/25', '2025/05/30', 'Fisica'),
+('Descuento Virtual', '¡Ahorra desde la comodidad de tu hogar!', 2626, 'Fijo', 10, '2024/11/15', '2024/11/17', 'Online'),
+('Descuento Inverso', '¡El precio baja cada hora! Cuanto más esperas, más ahorras.', 2727, 'Fijo', 15, '2025/04/07', '2025/04/09', 'Fisica'),
+('Tech Week', '¡Conéctate con el ahorro!', 2828, 'Fijo', 30, '2025/03/03', '2025/03/09','Online'),
+('App Descuento', 'Descarga nuestra app y accede a promociones exclusivas', 2929, 'Fijo', 15, '2025/05/20', '2025/05/22','Online'),
+('Social Sale', 'Síguenos en redes y descubre descuentos exclusivos.', 3030, 'Fijo', 10, '2024/12/01', '2025/12/31','Online'),
+('GaMeR Weekend', 'Fin de semana perfecto para gamers', 3131, 'Fijo', 15, '2024/07/13', '2024/07/14', 'Ambos'),
+('Cyber Weekend', 'Rebajas en tecnologia, solo por fin de semana', 3232, 'Fijo', 10, '2025/03/15', '2025/03/16','Ambos'),
+('Experiencia VIP', 'Disfruta de beneficios exclusivos y descuentos premium', 3333, 'Fijo', 25, '2025/02/15', '2025/02/17','Ambos'),
+('Selección Gourmet', '¡Un festín para los sentidos!', 3434, 'Fijo', 25, '2024/05/23', '2024/05/25','Ambos'),
+('Artisan Savings', 'Productos artesanales únicos con descuentos especiales', 3535, 'Fijo', 15, '2025/03/13', '2025/03/14','Ambos'),
+('Luxury Offers', '¡El lujo al alcance de tu mano!', 3636, 'Fijo', 20, '2023/01/03', '2023/01/03','Ambos'),
+('Personal Shopper', 'Un asesor personal para que encuntres los mejores descuentos', 3737, 'Fijo', 5, '2023/04/01', '2023/04/05','Ambos'),
+('Ahorro Verdes', 'Un lugar donde hallaras el precio justo', 3838, 'Fijo', 30, '2025/10/10', '2025/10/12','Ambos'),
+('Charity Offers', '¡Ahorra y ayuda!', 3939, 'Fijo', 30, '2025/01/20', '2025/01/23','Ambos'),
+('De compras x el GamA', 'Visitanos y descubre', 4040, 'Fijo', 10, '2024/09/01', '2025/09/10','Ambos');
+
+--SELECT * FROM Promo;
+
+--ERROR En insert Sucursal: 
+-- The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Sucursal__ciudad__76E18148". 
+--The conflict occurred in database "master", table "dbo.Ciudad", column 'id'.
+
+INSERT INTO Sucursal (nombre, direccion, telefono, horaAbrir, horaCerrar, ciudadId) VALUES
+('Los Palos Grandes', '3ra. Av. de Los Palos Grandes entre 2da. y 3ra. Transversal. Edf. Versalles.', 02122457876, 00, 23, 1080),
+('La India', 'Urbanización La Paz. Cruce de la Av. O"Higgins con Calle Junín.',02123145678, 00, 23, 1020),
+('Express Santa Eduvigis','Av. Rómulo Gallegos 2da Av. Santa Eduvigis, detrás de la estación del metro miranda.', 02127544661, 00, 23, 1030),
+('Macaracuay','Av Mara con Calle San Jose, C.C. Macaracuay Plaza, Nivel PB.', 02121457531, 00, 23, 1071),
+('Express Boleita Norte','Av. Principal Boleíta Norte. Centro Comercial Parque Residencial del Este Nivel Comercio 2. Municipio Sucre – Estado Miranda.', 02129841322, 00, 23, 1071),
+('Express Los Ruices','Avenida Francisco de Miranda con Calle A y B, Torre Cinética (antiguo Centro Boleíta), Locales A y D, Urb. Los Ruices.', 02124451221, 00, 23, 1071),
+('Express Caurimare','Av. Principal de Caurimare con Calle “D”. Parcela J 1B, Urbanizacion Caurimare. El Cafetal, Municipio Baruta.', 02126648571, 00, 23, 1061),
+('Express Chuao','Av. Araure con calle Las Lomas, C.C. Chuao, locales del 1 al 5, Urb. Chuao.', 02123124559,00, 23 ,1061),
+('Express El Paraiso','Urbanización El Paraíso. Av. José Antonio Paez con Av. "H".', 02122168853 ,00 ,23 ,1020),
+('Express La Urbina', 'Calle 5 con Calle 7.Parcela B2-15-16. La Urbina Sur.', 02123511783, 00 ,23 , 1073); 
+
+--SELECT * FROM Sucursal;
+
 --TipoEnvio      tiempoEstimadoEntrega*
 SET IDENTITY_INSERT TipoEnvio ON;
 INSERT INTO TipoEnvio (id, nombreEnvio, tiempoEstimadoEntrega, costoEnvio) VALUES
