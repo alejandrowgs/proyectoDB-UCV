@@ -370,8 +370,6 @@ marcaId) VALUES
 ('Mal Portada', '161616168', 'Bebida alcohólica Mal Portada', 'PorUnidad', 7.00, 1, 11, 13),
 ('Yogur de Fresa', '171717179', 'Yogur sabor fresa', 'PorUnidad', 1.50, 0, 2, 6),
 ('Yogur de Mango', '181818180', 'Yogur sabor mango', 'PorUnidad', 1.50, 0, 2, 6),
-('Agua 1L', '19919191', 'Agua embotellada 1L', 'PorUnidad', 0.80, 0, 1, 1),
-('Agua 5L', '202020202', 'Agua embotellada 5L', 'PorUnidad', 2.50, 0, 1, 1),
 ('Acetaminofén 10 mg', '212121213', 'Analgésico acetaminofén 10 mg', 'PorUnidad', 1.00, 0, 13, 15),
 ('Ibuprofeno 500mg', '222222224', 'Analgésico ibuprofeno 500 mg', 'PorUnidad', 1.50, 0, 13, 15),
 ('Atamel 10mg', '232323235', 'Analgésico atamel 10 mg', 'PorUnidad', 1.00, 0, 13, 15),
