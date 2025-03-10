@@ -144,28 +144,28 @@ INSERT INTO Cargo (id, nombre, descripcion, salarioBasePorHora) VALUES
 SET IDENTITY_INSERT Cargo OFF;
 
 -- Marca
-SET IDENTITY_INSERT Marca ON;
-INSERT INTO Marca (id, nombre, descripcion) VALUES
-(1, 'Coca-Cola', 'Bebidas gaseosas y refrescos'),
-(2, 'Pepsi', 'Bebidas y snacks'),
-(3, 'Nestle', 'Productos alimenticios y bebidas'),
-(4, 'Unilever', 'Productos de cuidado personal y alimentos'),
-(5, 'Kelloggs', 'Cereales y snacks'),
-(6, 'Danone', 'Productos lacteos y yogures'),
-(7, 'Heinz', 'Salsas y conservas'),
-(8, 'Colgate', 'Productos de higiene bucal'),
-(9, 'P&G', 'Productos de limpieza y cuidado personal'),
-(10, 'Lays', 'Snacks y papas fritas'),
-(11, 'Bimbo', 'Pan y productos de panaderia'),
-(12, 'La Serenisima', 'Productos lacteos y derivados'),
-(13, 'Quilmes', 'Bebidas alcoholicas y cervezas'),
-(14, 'Arcor', 'Golosinas y productos alimenticios'),
-(15, 'Molinos', 'Harinas y productos alimenticios'),
-(16, 'Mondelez', 'Galletas y snacks'),
-(17, 'Knorr', 'Sopas y condimentos'),
-(18, 'Natura', 'Productos de belleza y cuidado personal'),
-(19, 'Fanta', 'Bebidas gaseosas'),
-(20, 'Sprite', 'Bebidas gaseosas'),
+
+INSERT INTO Marca (nombre, descripcion) VALUES
+('Coca-Cola', 'Bebidas gaseosas y refrescos'),
+('Pepsi', 'Bebidas y snacks'),
+('Nestle', 'Productos alimenticios y bebidas'),
+('Unilever', 'Productos de cuidado personal y alimentos'),
+('Kelloggs', 'Cereales y snacks'),
+('Danone', 'Productos lacteos y yogures'),
+('Heinz', 'Salsas y conservas'),
+('Colgate', 'Productos de higiene bucal'),
+('P&G', 'Productos de limpieza y cuidado personal'),
+('Lays', 'Snacks y papas fritas'),
+('Bimbo', 'Pan y productos de panaderia'),
+('La Serenisima', 'Productos lacteos y derivados'),
+('Quilmes', 'Bebidas alcoholicas y cervezas'),
+('Arcor', 'Golosinas y productos alimenticios'),
+('Molinos', 'Harinas y productos alimenticios'),
+('Mondelez', 'Galletas y snacks'),
+('Knorr', 'Sopas y condimentos'),
+('Natura', 'Productos de belleza y cuidado personal'),
+('Fanta', 'Bebidas gaseosas'),
+('Sprite', 'Bebidas gaseosas'),
 ('GAMA', 'Marca propia de Supermercados GAMA.'),
 ('Empresas Polar', 'Conglomerado de empresas que incluye alimentos, bebidas y otros productos.'),
 ('Los Andes', 'Bebidas naturales a base de frutas.'),
@@ -209,7 +209,7 @@ INSERT INTO Marca (id, nombre, descripcion) VALUES
 ('Lucky Strike', 'Cigarrillos de tabaco rubio.'),
 ('Duracell', 'Baterías y pilas de larga duración.'),
 ('Energizer', 'Pilas y baterías de calidad.');
-SET IDENTITY_INSERT Marca OFF;
+
 
 -- Categoria
 SET IDENTITY_INSERT Categoria ON;
