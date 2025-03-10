@@ -62,7 +62,7 @@ CREATE TABLE Marca
 CREATE TABLE Producto 
   ( id INT NOT NULL IDENTITY(1,1)
   , nombre VARCHAR (100) NOT NULL
-  , codigoBarra INT                                                                  --Cambiado a INT
+  , codigoBarra BIGINT UNIQUE                                                                 --Cambiado a BIGINT y UNIQUE agregado
   , descripcion VARCHAR (100) NOT NULL
   , tipoPrecio VARCHAR(20) CHECK (tipoPrecio IN ('PorUnidad', 'PorPesoKg'))                        
   , precioPor DECIMAL(10, 2)                           
