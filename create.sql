@@ -177,12 +177,11 @@ CREATE TABLE Inventario
   );
 
 CREATE TABLE ClienteDireccion 
-  ( id INT
+  ( id INT PRIMARY KEY NOT NULL IDENTITY
   , clienteId INT
   , tipoDireccion VARCHAR(20) CHECK (tipoDireccion IN ( 'Facturacion', 'Envio'))
   , dirLinea1 VARCHAR(100) NOT NULL
   , ciudadId INT
-  , PRIMARY KEY (id)
   , FOREIGN KEY(clienteId) REFERENCES Cliente(id)
   , FOREIGN KEY(ciudadId) REFERENCES Ciudad(id)         
   );
