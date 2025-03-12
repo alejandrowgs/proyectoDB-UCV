@@ -199,7 +199,7 @@ SET IDENTITY_INSERT Cargo ON;
 INSERT INTO Cargo (id, nombre, descripcion, salarioBasePorHora) VALUES
 (1, 'Cajero', 'Atencion al cliente en caja y cobro de productos', 12.00),
 (2, 'Reponedor', 'Encargado de reponer productos en estanterias', 10.00),
-(3, 'Gerente de Tienda', 'Responsable de la gestion general del supermercado', 25.00),
+(3, 'Analista de Inventarios', 'Control y gestion de inventarios', 18.00)
 (4, 'Auxiliar de Limpieza', 'Mantenimiento y limpieza de las instalaciones', 9.00),
 (5, 'Encargado de Almacen', 'Gestiona el inventario y almacen de productos', 15.00),
 (6, 'Carnicero', 'Preparacion y venta de productos carnicos', 14.00),
@@ -211,7 +211,7 @@ INSERT INTO Cargo (id, nombre, descripcion, salarioBasePorHora) VALUES
 (12, 'Operario de Montacargas', 'Maneja montacargas para mover mercancia', 13.00),
 (13, 'Tecnico de Refrigeracion', 'Mantenimiento de equipos de refrigeracion', 16.00),
 (14, 'Dependiente de Farmacia', 'Atencion en la seccion de farmacia', 14.00),
-(15, 'Analista de Inventarios', 'Control y gestion de inventarios', 18.00);
+(15, 'Gerente de Tienda', 'Responsable de la gestion general del supermercado', 25.00);
 SET IDENTITY_INSERT Cargo OFF;
 
 -- Marca
