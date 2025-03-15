@@ -271,8 +271,9 @@ INSERT INTO Marca (nombre, descripcion) VALUES
 ('Knorr', 'Sopas y condimentos'),
 ('Natura', 'Productos de belleza y cuidado personal'),
 ('Fanta', 'Bebidas gaseosas'),
-('Sprite', 'Bebidas gaseosas'),
-('GAMA', 'Marca propia de Supermercados GAMA.'),
+('Sprite', 'Bebidas gaseosas'),      --
+  
+('Gama', 'Marca propia de Supermercados GAMA.'),
 ('Empresas Polar', 'Conglomerado de empresas que incluye alimentos, bebidas y otros productos.'),
 ('Los Andes', 'Bebidas naturales a base de frutas.'),
 ('La Castellana', 'Salsas y condimentos típicos venezolanos.'),
@@ -368,7 +369,6 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (5487769,'Jose','Paez','jp@gmail.com','M','1962/05/03','2020/07/02'),
 (12456782,'Josefa','Guitierrez','jg@gmail.com','F','1970/04/10','2024/03/01'),
 (10213576,'Emma','Libardo','emma245@gmail.com','F','1968/05/03','2024/08/03'),
-
 (20413679,'Alma','Jarabillo','almaj578@gmail.com','F','1990/11/01','2021/08/03'),
 (7546821,'Carlos','Garcia','cg878@gmail.com','M','1965/08/23','2022/09/28'),
 (25646991,'Estuart','Rodriguez','er@gmail.com','M','1996/03/12','2020/10/03'),
@@ -380,7 +380,6 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (19876324,'Jose','Lopez','jl@hotmail.com','M','1980/04/22','2023/09/07'),
 (26546128,'Paul','Moreno','paul1.0@hotmail.com','M','1998/06/14','2025/10/01'),
 (30111714,'Miranda','Perez','mperez@hotmail.com','F','2003/05/04','2023/11/21'),
-
 (14578991,'Maria','Martin','maria.martin@hotmail.com','F','1976/11/30','2019/02/02'),
 (13524165,'Alondra','Diaz','ad@hotmail.com','F','1974/04/28','2020/09/03'),
 (21475896,'Andres','Lopez','al310@hotmail.com','M','1992/06/08','2015/07/02'),
@@ -392,7 +391,6 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (28896451,'Ricardo','Carmona','rc@yahoo.es','M','2000/01/01','2020/01/04'),
 (14754123,'Mateo','Serrano','serrano@yahoo.es','M','1980/06/01','2022/04/03'),
 (1024585,'Carol','Molina','molina13@yahoo.es','F','1970/06/14','2021/09/03'),
-
 (13264458,'Alvaro','Carmona','alv@yahoo.es','M','1975/02/27','2022/09/06'),
 (14442135,'Sofia','Medida','sm@yahoo.es','F','1976/02/12','2024/08/03'),
 (26854456,'Marcela','Ortiz','m.ortiz@yahoo.es','F','1996/04/03','2022/11/18'),
@@ -409,6 +407,7 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (41627302, 'Salvador', 'Contreras', 'salvador.contreras72@gmail.com', 'M', '2016-10-17', '2018-01-05'),
 (91802769, 'Berta', 'Benavides', 'berta.benavides36@gmail.com', 'F', '1930-02-14', '1998-03-07'),
 (75136920, 'Isabel', 'Rodríquez', 'isabel.rodriquez49@gmail.com', 'F', '2005-05-02', '2020-02-15'),
+
 (58273557, 'Benito', 'Moreno', 'benito.moreno80@gmail.com', 'M', '2001-06-28', '2021-04-17'),
 (74158472, 'Ignacio', 'Flores', 'ignacio.flores70@gmail.com', 'M', '1975-10-25', '1983-07-07'),
 (69974900, 'Mateo', 'Quintero', 'mateo.quintero60@gmail.com', 'M', '1969-09-23', '2017-01-07'),
@@ -419,6 +418,7 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (25644590, 'Irma', 'Barajas', 'irma.barajas63@gmail.com', 'F', '1969-11-29', '2002-04-22'),
 (32026487, 'Raquel', 'Garibay', 'raquel.garibay8@gmail.com', 'F', '1990-01-05', '1993-06-26'),
 (60125458, 'Claudia', 'Tórrez', 'claudia.torrez27@gmail.com', 'F', '2012-08-21', '1974-06-24'),
+
 (42957001, 'Aurora', 'Blanco', 'aurora.blanco45@gmail.com', 'F', '1938-10-05', '1973-03-05'),
 (14637496, 'Nancy', 'Saiz', 'nancy.saiz28@gmail.com', 'F', '1978-04-09', '1972-03-06'),
 (39069528, 'Hermelinda', 'Ureña', 'hermelinda.urena27@gmail.com', 'F', '1989-02-04', '1998-08-24'),
@@ -429,6 +429,7 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (77262571, 'Judith', 'Mateo', 'judith.mateo34@gmail.com', 'F', '2011-04-14', '2013-05-27'),
 (24678442, 'Fabiola', 'López', 'fabiola.lopez40@gmail.com', 'F', '1980-04-25', '1975-03-25'),
 (4425482, 'Elena', 'Escobar', 'elena.escobar58@gmail.com', 'F', '1951-12-22', '1990-10-08'),
+
 (63958907, 'Sara', 'Hurtado', 'sara.hurtado73@gmail.com', 'F', '2004-09-18', '2007-06-10'),
 (91096787, 'Ángela', 'Burgos', 'angela.burgos44@gmail.com', 'F', '1993-01-03', '2021-10-06'),
 (5186383, 'Catalina', 'Cornejo', 'catalina.cornejo76@gmail.com', 'F', '2000-10-14', '2008-07-03'),
@@ -439,6 +440,7 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (66123086, 'Gerardo', 'Raya', 'gerardo.raya40@gmail.com', 'M', '1965-02-11', '2002-04-25'),
 (11055915, 'Virginia', 'Munguía', 'virginia.munguia89@gmail.com', 'F', '1954-09-15', '1996-07-11'),
 (65289435, 'Irma', 'Carrillo', 'irma.carrillo4@gmail.com', 'F', '1962-10-31', '2013-06-10'),
+
 (25552216, 'Rodrigo', 'Meza', 'rodrigo.meza67@gmail.com', 'M', '2014-12-11', '2008-02-15'),
 (98178821, 'Federico', 'Alemán', 'federico.aleman38@gmail.com', 'M', '1996-07-01', '1988-07-01'),
 (94668208, 'Genaro', 'Carrión', 'genaro.carrion73@gmail.com', 'M', '2011-03-29', '1992-10-01'),
@@ -449,6 +451,7 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (80821954, 'Tania', 'Téllez', 'tania.tellez75@gmail.com', 'F', '1969-03-03', '1979-04-05'),
 (16702553, 'Antonia', 'Amador', 'antonia.amador21@gmail.com', 'F', '1951-07-23', '2016-08-08'),
 (81381364, 'Teresa', 'Esparza', 'teresa.esparza96@gmail.com', 'F', '2006-11-04', '1973-05-04'),
+
 (52507238, 'René', 'Casares', 'rene.casares30@gmail.com', 'M', '1959-11-23', '1991-06-22'),
 (81269394, 'José Eduardo', 'Arce', 'jose eduardo.arce13@gmail.com', 'M', '1996-07-07', '1988-08-17'),
 (24826513, 'Agustín', 'Esquivel', 'agustin.esquivel30@gmail.com', 'M', '1994-02-05', '2005-05-13'),
@@ -458,6 +461,7 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (9659876, 'Ángela', 'García', 'angela.garcia22@gmail.com', 'F', '2003-04-21', '2011-04-27'),
 (47015660, 'Vicente', 'Madera', 'vicente.madera52@gmail.com', 'M', '1975-04-06', '1983-10-06'),
 (8192977, 'Marco Antonio', 'Dueñas', 'marco antonio.duenas1@gmail.com', 'M', '1938-06-22', '2006-04-13'),
+
 (5285320, 'Nadia', 'Robles', 'nadia.robles65@gmail.com', 'F', '1954-05-12', '2015-10-14'),
 (26757081, 'Rubén', 'Ornelas', 'ruben.ornelas52@gmail.com', 'M', '1967-02-22', '2007-06-03'),
 (98193462, 'Francisca', 'Muñoz', 'francisca.munoz25@gmail.com', 'F', '2008-11-13', '1995-03-12'),
@@ -469,7 +473,6 @@ INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRe
 (63300491, 'Delia', 'Alcántar', 'delia.alcantar97@gmail.com', 'F', '2013-10-08', '1971-08-09'),
 (68263153, 'Lucas', 'Varela', 'lucas.varela17@gmail.com', 'M', '1943-04-21', '1972-08-01'),
 (88263752, 'Hugo', 'Oquendo', 'hugo.oquendo90@gmail.com', 'M', '1945-08-04', '2012-08-13');
-
 
 --proveedor
 INSERT INTO Proveedor (RIF, nombre, contacto, telefono, correo, ciudadId) VALUES
@@ -498,6 +501,7 @@ INSERT INTO Proveedor (RIF, nombre, contacto, telefono, correo, ciudadId) VALUES
 ('J-25657665-7', 'Miranda y Castellanos e Hijos', 'Mtro. Carolina Ontiveros', '(183)067-5375', 'armendarizalfredo@miranda-hijos.com', 23),
 ('J-55468268-4', 'Herrera y Amador S. R.L. de C.V.', 'Ing. Esmeralda Godínez', '08868412696', 'cantulinda@herrera-cv.com', 24),
 ('J-22962012-5', 'Camacho-Pelayo', 'Alta  Gracia Marisela Prado', '(607)541-5115x05520', 'josefinabatista@camacho-pelayo-camacho-pelayo.com', 25),
+
 ('J-25379386-8', 'Grupo Acosta-Flores', 'Abraham Lozada Negrete', '1-093-227-1754x20355', 'sloya@grupo-acosta-flores.com', 26),
 ('J-28441165-5', 'Enríquez-Villaseñor A.C.', 'Oswaldo Vera Manzanares', '(622)358-3324', 'lourdes02@enríquez-villaseñor-ac.com', 27),
 ('J-24872932-9', 'Orta A.C.', 'César Peres Luna', '(629)645-1375x8066', 'peralesines@orta-ac.com', 28),
@@ -523,6 +527,7 @@ INSERT INTO Proveedor (RIF, nombre, contacto, telefono, correo, ciudadId) VALUES
 ('J-48973411-5', 'Laboratorios Berríos-Ponce', 'Sr(a). Silvano Reyna', '1-299-045-6007x15427', 'natividadmoya@laboratorios-berríos-ponce.com', 48),
 ('J-15522341-3', 'Laboratorios Palacios-Miranda', 'Miguel Laura Alejandro Márquez', '487-089-8407x6165', 'bavalos@laboratorios-palacios-miranda.com', 49),
 ('J-40851745-2', 'Laboratorios Aragón, Hernández y Verdugo', 'Emilio Óliver Sevilla Molina', '431-953-9852x250', 'vallejocristal@laboratorios-verdugo.com', 50),
+
 ('J-15262322-0', 'Naranjo-Lovato e Hijos', 'Irene Miguel Ángel Páez Zaragoza', '(202)907-2507x493', 'ulloaluz@naranjo-lovato-hi.com', 51),
 ('J-68156493-6', 'Proyectos Delgado, Tamayo y de la O', 'Victoria Cotto Venegas', '08896644406', 'francisco-javier88@proyectos-ov.com', 52),
 ('J-53218349-5', 'Monroy-Espinal e Hijos', 'Claudia Aguayo', '296-570-8693x0582', 'susanamoreno@monroy-espinal.com', 53),
@@ -550,6 +555,17 @@ INSERT INTO Sucursal (nombre, direccion, telefono, horaAbrir, horaCerrar, ciudad
 ('Express Chuao','Av. Araure con calle Las Lomas, C.C. Chuao, locales del 1 al 5, Urb. Chuao.', 02123124559,00, 23 ,47),
 ('Express El Paraiso','Urbanización El Paraíso. Av. José Antonio Paez con Av. "H".', 02122168853 ,00 ,23 ,47),
 ('Express La Urbina', 'Calle 5 con Calle 7.Parcela B2-15-16. La Urbina Sur.', 02123511783, 00 ,23 , 49); 
+
+('Vizcaya', 'Av. La Guairita con calle La Lomita, C.C. Vizcaya, nivel PB', 02122854669, 00 ,23 , 47); 
+('Express San Bernardino', 'Av. Vollmer con la Av. Caracas, San Bernardino', 02127984612, 00 ,23 , 49); 
+('Express La Jolla', 'Boulevard La Jolla, C.C. Express Nivel PB, Local E1', 02124651201, 00 ,23 , 48); 
+('Plus La Trinidad', 'Calle Camino del Váquiro, Urb. Granjerías de La Trinidad', 02126311225, 00 ,23 , 48); 
+('Express Secubán Norte', 'Av. Los Chorros con 10ma. Transversal, C.C Galerías Sebucán', 02122847669, 00 ,23 , 48); 
+('Panamericana', 'Kilómetro 16, Carretera Panamericana, Municipio Los Salias', 02125594661, 00 ,23 , 49); 
+('Express La Castellana', 'Entre Av. Coromoto y Av. Sur de Altamira', 02123312545, 00 ,23 , 48); 
+('La Tahona', 'Urb. La Tahona, calle la solera, C.C. La Tahona', 02125514487, 00 ,23 , 48); 
+('Express Santa María', 'Kilómetro 3 Carretera Petare Guarenas,', 02124657981, 00 ,23 , 48); 
+('Santa Fe', 'Av. José María Vargas con calle Santa Fe', 02122127410, 00 ,23 , 47); 
 
 --Empleado
 
