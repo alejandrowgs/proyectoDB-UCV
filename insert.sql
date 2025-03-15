@@ -227,7 +227,7 @@ INSERT INTO Marca (nombre, descripcion) VALUES
 ('Natura', 'Productos de belleza y cuidado personal'),
 ('Fanta', 'Bebidas gaseosas'),
 ('Sprite', 'Bebidas gaseosas'),
-('GAMA', 'Marca propia de Supermercados GAMA.'),
+('Gama', 'Marca propia de Supermercados GAMA.'),
 ('Empresas Polar', 'Conglomerado de empresas que incluye alimentos, bebidas y otros productos.'),
 ('Los Andes', 'Bebidas naturales a base de frutas.'),
 ('La Castellana', 'Salsas y condimentos típicos venezolanos.'),
