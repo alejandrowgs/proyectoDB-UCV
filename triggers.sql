@@ -1,3 +1,76 @@
+--a. Inventario (al tener datos nuevos en ProveedorProducto, crea el registro si el producto no existe 
+--y en caso contrario sólo actualiza la cantidad)
+
+CREATE TRIGGER Inventario_Triggger
+ON ProveedorProducto
+AFTER INSERT
+AS
+BEGIN 
+    -- Insertar nuevos productos en la tabla Inventario si no existen
+    INSERT INTO Inventario (productoId, cantidad)
+    SELECT i.productoId, i.cantidad 
+    FROM inserted i
+    WHERE NOT EXISTS (
+        SELECT 1 
+        FROM Inventario inv 
+        WHERE inv.productoId = i.productoId
+    );--El procedimiento se encarga de sumar la cantidad en el inventario, asi que no es necesario 
+END;
+
+/*Factura y FacturaDetalle (en caso de ser orden online, orden detalle se copia por
+completo a factura detalle),
+*/
+
+CREATE TRIGGER FacturaDetalle_Trigger
+ON Factura
+AFTER INSERT
+AS
+BEGIN
+    -- Llenar FacturaDetalle con los detalles de los productos del carrito relacionados con la factura
+    INSERT INTO FacturaDetalle (facturaId, productoId, cantidad, precioPor)
+    SELECT 
+        i.id AS facturaId, 
+        c.productoId, 
+        c.cantidad, 
+        c.precioPor
+    FROM 
+        inserted i
+    INNER JOIN 
+        Carrito c ON c.clienteId = i.clienteId;
+END;
+
+
+-- HistorialClienteProducto (al comprar y agregar al carrito un producto),
+CREATE TRIGGER HistorialClienteProducto_Trigger
+ON Carrito
+AFTER INSERT
+AS
+BEGIN
+    INSERT INTO HistorialClienteProducto (clienteId, productoId, fecha, tipoAccion)
+    SELECT 
+        i.clienteId, 
+        i.productoId, 
+        i.fechaAgregado, 
+		    'Carrito' AS tipoAccion
+    FROM 
+        inserted i
+END;
+
+           
+--Trigger extra para que cada vez que se compre un producto se le reste al inventario 
+--Revisar que no de conflicto con el ultimo trigger 
+
+CREATE TRIGGER ActualizarInventario
+On FacturaDetalle
+AFTER INSERT
+AS 
+BEGIN 
+	UPDATE Inteventario
+	SET cantidad = cantidad -inserted.cantidad
+	FROM Inventario
+	INNER JOIN inserted ON inventario.productoId=inserted.productoId;
+END;
+
 /*b. Al comprar un producto al proveedor, actualizar el precioPor del Producto tomando como base 
 el precio por el que se le compró al proveedor y sumarle un 30%.  */
 
@@ -7,23 +80,11 @@ ON ProveedorProducto
 AFTER INSERT  
 AS
 BEGIN
-
-    DECLARE @proveedorId INT;
-    DECLARE @prodProvId INT;
-    DECLARE @fechaCompra DATE;
-    DECLARE @precioCompraProv DECIMAL(10,2);
-    DECLARE @precioNuevo DECIMAL(10,2);
-    
-    --Datos de la compra luego de insertado los datos
-    SELECT @proveedorId = proveedorId, @prodProvId = productoId, @fechaCompra = fechaCompra, @precioCompraProv = precioPor        --Id de provProd
-    FROM inserted;        --Filas que se insertaron
-    
-    SET @precioNuevo = @precioCompraProv + ((@precioCompraProv * 30) / 100);		--Error de punto y coma ¿?
-
-    UPDATE Producto
-    SET precioPor = @precioNuevo
-    WHERE id = @prodProvId            --Id de la tabla prod comparo con el id del producto en la tabla ProvProd
-
+   UPDATE Producto
+   SET precioPor = i.precioPor + (i.precioPor * 30) / 100
+   FROM Producto p
+   INNER JOIN inserted i ON p.Id = i.productoId;
+END;
 
 --c. Al insertar datos en FacturaPromo: llama al verificador de promo válida y aceptar el registro o no.  
 

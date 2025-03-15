@@ -77,7 +77,7 @@ CREATE TABLE Producto
 CREATE TABLE ProductoRecomendadoParaProducto 
   ( productoId INT
   , productoRecomendadoId INT
-  , mensaje VARCHAR (100) NOT NULL
+  , mensaje VARCHAR (255) NOT NULL                  --Se aumento el VARCHAR para mensajes un poco mas largos
   , PRIMARY KEY (productoId, productoRecomendadoId)
   , FOREIGN KEY(productoId) REFERENCES Producto(id)
   , FOREIGN KEY(productoRecomendadoId) REFERENCES Producto(id)        

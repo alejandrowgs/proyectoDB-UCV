@@ -95,10 +95,12 @@ BEGIN
     FROM Carrito c
     WHERE c.clienteId = @clienteId;
     
-    INSERT INTO FacturaDetalle (facturaId, productoId, cantidad, precioPor)
+/* INSERT INTO FacturaDetalle (facturaId, productoId, cantidad, precioPor)
     SELECT @facturaId, c.productoId, c.cantidad, c.precioPor
     FROM Carrito c
     WHERE c.clienteId = @clienteId;
+
+*/
     
     -- Simular el pago
     INSERT INTO Pago (facturaId, nroTransaccion, metodoPagoId)
