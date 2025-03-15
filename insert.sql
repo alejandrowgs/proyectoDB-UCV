@@ -169,6 +169,51 @@ INSERT INTO Ciudad (id, nombre, estadoId) VALUES
 (65, 'Cubiro', 25);
 SET IDENTITY_INSERT Ciudad OFF;
 
+INSERT INTO Promo(nombre, slogan, codigo, tipoDescuento, valorDescuento, fechaInicio, fechaFin, tipoPromocion) VALUES
+--tipoDescuento : %
+('Black Friday sales','Promociones alocadas' , 1001, 'Porcentaje', 75, '2024/11/05', '2024/11/20', 'Ambos'),
+('Deporte EXtremo', 'Equípate para la aventura con descuentos que te impulsarán', 2002, 'Porcentaje', 25, '2024/05/15', '2024/08/15', 'Fisica'),
+('Precio especial','Precios Especiales', 3003, 'Porcentaje', 15, '2024/02/20', '2024/02/21', 'Fisica'),
+('2x1', 'Compra dos, por el precio de uno', 4004, 'Porcentaje', 50, '2025/01/30', '2025/01/30', 'Fisica'),
+('Regalo sorpresa', 'Compra y descubre tu regalo', 5005, 'Porcentaje', 10, '2024/12/21', '2024/12/24', 'Fisica'),
+('Rebajas Explosivas', '¡Precios que hacen boom en tu bolsillo!', 6006, 'Porcentaje', 60, '2024/02/07', '2024/02/09', 'Fisica'),
+('Precio de Remate', 'Precios que no volveran.', 7007, 'Porcentaje', 25, '2023/03/21', '2023/03/22', 'Fisica'),
+('Precio de Locura', '"¡Precios tan bajos que te harán dudar!', 8008, 'Porcentaje', 75, '2025/01/01', '2025/01/06','Ambos'),
+('Saving Pack', 'Todo lo que necesitas en un solo paquete, ¡y al mejor precio!', 9009, 'Porcentaje', 40, '2024/07/01', '2025/09/01', 'Fisica'),
+('Oferta Relámpago', '¡Solo por hoy!', 1010, 'Porcentaje', 30, '2025/01/15', '2025/01/17', 'Fisica'),
+('Promoción Exclusiva', 'Una oferta solo para ti, ¡no la dejes escapar!', 1111, 'Porcentaje', 15, '2024/10/30', '2024/10/31', 'Online'),
+('Oferta del Día', '¡No te la pierdas!', 1212, 'Porcentaje', 10, '2025/03/03', '2025/03/03', 'Ambos'),
+('Oferta Nocturna', 'Descuentos para los noctámbulos', 1313, 'Porcentaje', 20, '2025/01/01', '2025/03/01', 'Fisica'),
+('Precio de Fin De', 'Para quienes disfrutan el fin de semana al extremo', 1414, 'Porcentaje', 20, '2024/11/01', '2024/11/03', 'Fisica'),
+('Verano EN GaMa', '¡Llegó el Verano!', 1515, 'Porcentaje', 35, '2025/06/01', '2025/08/31', 'Fisica'),
+('Solo en GaMa', 'Productos exclusivos', 1616, 'Porcentaje', 15, '2025/04/01', '2025/04/19', 'Online'),
+('Belleza Radiante', 'Luce radiante sin gastar una fortuna',1717, 'Porcentaje', 15, '2025/06/01', '2025/06/08', 'Ambos'),
+('Promoción de Aniversario', 'Descuentos especiales por nuestro aniversario.', 1818, 'Porcentaje', 15, '2025/05/15', '2025/05/20', 'Fisica'),
+('Cumpleaños AlOcaDo', 'Celebra tu cumpleaños, con tu supermercado de confianza', 1919, 'Porcentaje', 15, '2025/07/25', '2025/08/25', 'Fisica'),
+('Club Ahorro', 'Únete y descubre un mundo de descuentos y promociones especiales.', 2020, 'Porcentaje', 10, '2024/10/01', '2025/10/01', 'Online'),
+
+--tipoDescuento : Fijo
+('Gold Membresy', 'Beneficios exclusivos para miembros dorados', 2121, 'Fijo', 25, '2025/09/15', '2025/09/30', 'Fisica'),
+('Navidad en GaMa', 'Rebajas de fin de año', 2222, 'Fijo', 30, '2024/12/21', '2025/01/06', 'Fisica'),
+('Salud y Bienestar', '¡Descuentos para cuidar de ti!', 2323, 'Fijo', 15, '2025/03/01', '2025/04/01', 'Fisica'),
+('Juguetes Felices', 'La alegría de los niños al mejor precio', 2424, 'Fijo', 20, '2025/07/01', '2025/07/31', 'Fisica'),
+('Libros y Cultura', 'Enriquece tu mente; Nosotros hacemos el resto', 2525, 'Fijo', 10, '2024/05/25', '2025/05/30', 'Fisica'),
+('Descuento Virtual', '¡Ahorra desde la comodidad de tu hogar!', 2626, 'Fijo', 10, '2024/11/15', '2024/11/17', 'Online'),
+('Descuento Inverso', '¡El precio baja cada hora! Cuanto más esperas, más ahorras.', 2727, 'Fijo', 15, '2025/04/07', '2025/04/09', 'Fisica'),
+('Tech Week', '¡Conéctate con el ahorro!', 2828, 'Fijo', 30, '2025/03/03', '2025/03/09','Online'),
+('App Descuento', 'Descarga nuestra app y accede a promociones exclusivas', 2929, 'Fijo', 15, '2025/05/20', '2025/05/22','Online'),
+('Social Sale', 'Síguenos en redes y descubre descuentos exclusivos.', 3030, 'Fijo', 10, '2024/12/01', '2025/12/31','Online'),
+('GaMeR Weekend', 'Fin de semana perfecto para gamers', 3131, 'Fijo', 15, '2024/07/13', '2024/07/14', 'Ambos'),
+('Cyber Weekend', 'Rebajas en tecnologia, solo por fin de semana', 3232, 'Fijo', 10, '2025/03/15', '2025/03/16','Ambos'),
+('Experiencia VIP', 'Disfruta de beneficios exclusivos y descuentos premium', 3333, 'Fijo', 25, '2025/02/15', '2025/02/17','Ambos'),
+('Selección Gourmet', '¡Un festín para los sentidos!', 3434, 'Fijo', 25, '2024/05/23', '2024/05/25','Ambos'),
+('Artisan Savings', 'Productos artesanales únicos con descuentos especiales', 3535, 'Fijo', 15, '2025/03/13', '2025/03/14','Ambos'),
+('Luxury Offers', '¡El lujo al alcance de tu mano!', 3636, 'Fijo', 20, '2023/01/03', '2023/01/03','Ambos'),
+('Personal Shopper', 'Un asesor personal para que encuntres los mejores descuentos', 3737, 'Fijo', 5, '2023/04/01', '2023/04/05','Ambos'),
+('Ahorro Verdes', 'Un lugar donde hallaras el precio justo', 3838, 'Fijo', 30, '2025/10/10', '2025/10/12','Ambos'),
+('Charity Offers', '¡Ahorra y ayuda!', 3939, 'Fijo', 30, '2025/01/20', '2025/01/23','Ambos'),
+('De compras x el GamA', 'Visitanos y descubre', 4040, 'Fijo', 10, '2024/09/01', '2025/09/10','Ambos');
+
 -- Categoria
 SET IDENTITY_INSERT Categoria ON;
 INSERT INTO Categoria (id, nombre, descripcion) VALUES
@@ -227,7 +272,7 @@ INSERT INTO Marca (nombre, descripcion) VALUES
 ('Natura', 'Productos de belleza y cuidado personal'),
 ('Fanta', 'Bebidas gaseosas'),
 ('Sprite', 'Bebidas gaseosas'),
-('Gama', 'Marca propia de Supermercados GAMA.'),
+('GAMA', 'Marca propia de Supermercados GAMA.'),
 ('Empresas Polar', 'Conglomerado de empresas que incluye alimentos, bebidas y otros productos.'),
 ('Los Andes', 'Bebidas naturales a base de frutas.'),
 ('La Castellana', 'Salsas y condimentos típicos venezolanos.'),
@@ -841,7 +886,12 @@ INSERT INTO ClienteDireccion (clienteId, tipoDireccion, dirLinea1, ciudadId) VAL
 (77, 'Facturacion', 'Avda. Las Malvas 74 Of. 735', 10),
 (78, 'Envio', 'Los Calafates 5481 Piso 5', 20),
 (79, 'Envio', 'Los Carrera 403 Piso 57', 2),
-(80, 'Envio', 'Marcos Ortega 20', 12);
+(80, 'Envio', 'Marcos Ortega 20', 12),
+
+--Clientes con dos direcciones 
+
+(81, 'Envio', 'Marcos Ortega 20', 12),
+(81, 'Facturacion', 'Calle Balmaceda 78 Piso 76', 13);
 
 INSERT INTO Carrito (clienteId, productoId, fechaAgregado, cantidad, precioPor)
 VALUES 
@@ -976,49 +1026,4 @@ VALUES
 
 
 
-
-INSERT INTO Promo(nombre, slogan, codigo, tipoDescuento, valorDescuento, fechaInicio, fechaFin, tipoPromocion) VALUES
---tipoDescuento : %
-('Black Friday sales','Promociones alocadas' , 1001, 'Porcentaje', 75, '2024/11/05', '2024/11/20', 'Ambos'),
-('Deporte EXtremo', 'Equípate para la aventura con descuentos que te impulsarán', 2002, 'Porcentaje', 25, '2024/05/15', '2024/08/15', 'Fisica'),
-('Precio especial','Precios Especiales', 3003, 'Porcentaje', 15, '2024/02/20', '2024/02/21', 'Fisica'),
-('2x1', 'Compra dos, por el precio de uno', 4004, 'Porcentaje', 50, '2025/01/30', '2025/01/30', 'Fisica'),
-('Regalo sorpresa', 'Compra y descubre tu regalo', 5005, 'Porcentaje', 10, '2024/12/21', '2024/12/24', 'Fisica'),
-('Rebajas Explosivas', '¡Precios que hacen boom en tu bolsillo!', 6006, 'Porcentaje', 60, '2024/02/07', '2024/02/09', 'Fisica'),
-('Precio de Remate', 'Precios que no volveran.', 7007, 'Porcentaje', 25, '2023/03/21', '2023/03/22', 'Fisica'),
-('Precio de Locura', '"¡Precios tan bajos que te harán dudar!', 8008, 'Porcentaje', 75, '2025/01/01', '2025/01/06','Ambos'),
-('Saving Pack', 'Todo lo que necesitas en un solo paquete, ¡y al mejor precio!', 9009, 'Porcentaje', 40, '2024/07/01', '2025/09/01', 'Fisica'),
-('Oferta Relámpago', '¡Solo por hoy!', 1010, 'Porcentaje', 30, '2025/01/15', '2025/01/17', 'Fisica'),
-('Promoción Exclusiva', 'Una oferta solo para ti, ¡no la dejes escapar!', 1111, 'Porcentaje', 15, '2024/10/30', '2024/10/31', 'Online'),
-('Oferta del Día', '¡No te la pierdas!', 1212, 'Porcentaje', 10, '2025/03/03', '2025/03/03', 'Ambos'),
-('Oferta Nocturna', 'Descuentos para los noctámbulos', 1313, 'Porcentaje', 20, '2025/01/01', '2025/03/01', 'Fisica'),
-('Precio de Fin De', 'Para quienes disfrutan el fin de semana al extremo', 1414, 'Porcentaje', 20, '2024/11/01', '2024/11/03', 'Fisica'),
-('Verano EN GaMa', '¡Llegó el Verano!', 1515, 'Porcentaje', 35, '2025/06/01', '2025/08/31', 'Fisica'),
-('Solo en GaMa', 'Productos exclusivos', 1616, 'Porcentaje', 15, '2025/04/01', '2025/04/19', 'Online'),
-('Belleza Radiante', 'Luce radiante sin gastar una fortuna',1717, 'Porcentaje', 15, '2025/06/01', '2025/06/08', 'Ambos'),
-('Promoción de Aniversario', 'Descuentos especiales por nuestro aniversario.', 1818, 'Porcentaje', 15, '2025/05/15', '2025/05/20', 'Fisica'),
-('Cumpleaños AlOcaDo', 'Celebra tu cumpleaños, con tu supermercado de confianza', 1919, 'Porcentaje', 15, '2025/07/25', '2025/08/25', 'Fisica'),
-('Club Ahorro', 'Únete y descubre un mundo de descuentos y promociones especiales.', 2020, 'Porcentaje', 10, '2024/10/01', '2025/10/01', 'Online'),
-
---tipoDescuento : Fijo
-('Gold Membresy', 'Beneficios exclusivos para miembros dorados', 2121, 'Fijo', 25, '2025/09/15', '2025/09/30', 'Fisica'),
-('Navidad en GaMa', 'Rebajas de fin de año', 2222, 'Fijo', 30, '2024/12/21', '2025/01/06', 'Fisica'),
-('Salud y Bienestar', '¡Descuentos para cuidar de ti!', 2323, 'Fijo', 15, '2025/03/01', '2025/04/01', 'Fisica'),
-('Juguetes Felices', 'La alegría de los niños al mejor precio', 2424, 'Fijo', 20, '2025/07/01', '2025/07/31', 'Fisica'),
-('Libros y Cultura', 'Enriquece tu mente; Nosotros hacemos el resto', 2525, 'Fijo', 10, '2024/05/25', '2025/05/30', 'Fisica'),
-('Descuento Virtual', '¡Ahorra desde la comodidad de tu hogar!', 2626, 'Fijo', 10, '2024/11/15', '2024/11/17', 'Online'),
-('Descuento Inverso', '¡El precio baja cada hora! Cuanto más esperas, más ahorras.', 2727, 'Fijo', 15, '2025/04/07', '2025/04/09', 'Fisica'),
-('Tech Week', '¡Conéctate con el ahorro!', 2828, 'Fijo', 30, '2025/03/03', '2025/03/09','Online'),
-('App Descuento', 'Descarga nuestra app y accede a promociones exclusivas', 2929, 'Fijo', 15, '2025/05/20', '2025/05/22','Online'),
-('Social Sale', 'Síguenos en redes y descubre descuentos exclusivos.', 3030, 'Fijo', 10, '2024/12/01', '2025/12/31','Online'),
-('GaMeR Weekend', 'Fin de semana perfecto para gamers', 3131, 'Fijo', 15, '2024/07/13', '2024/07/14', 'Ambos'),
-('Cyber Weekend', 'Rebajas en tecnologia, solo por fin de semana', 3232, 'Fijo', 10, '2025/03/15', '2025/03/16','Ambos'),
-('Experiencia VIP', 'Disfruta de beneficios exclusivos y descuentos premium', 3333, 'Fijo', 25, '2025/02/15', '2025/02/17','Ambos'),
-('Selección Gourmet', '¡Un festín para los sentidos!', 3434, 'Fijo', 25, '2024/05/23', '2024/05/25','Ambos'),
-('Artisan Savings', 'Productos artesanales únicos con descuentos especiales', 3535, 'Fijo', 15, '2025/03/13', '2025/03/14','Ambos'),
-('Luxury Offers', '¡El lujo al alcance de tu mano!', 3636, 'Fijo', 20, '2023/01/03', '2023/01/03','Ambos'),
-('Personal Shopper', 'Un asesor personal para que encuntres los mejores descuentos', 3737, 'Fijo', 5, '2023/04/01', '2023/04/05','Ambos'),
-('Ahorro Verdes', 'Un lugar donde hallaras el precio justo', 3838, 'Fijo', 30, '2025/10/10', '2025/10/12','Ambos'),
-('Charity Offers', '¡Ahorra y ayuda!', 3939, 'Fijo', 30, '2025/01/20', '2025/01/23','Ambos'),
-('De compras x el GamA', 'Visitanos y descubre', 4040, 'Fijo', 10, '2024/09/01', '2025/09/10','Ambos');
 
