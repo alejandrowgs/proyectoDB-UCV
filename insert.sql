@@ -569,6 +569,62 @@ INSERT INTO Sucursal (nombre, direccion, telefono, horaAbrir, horaCerrar, ciudad
 
 --Empleado
 
+INSERT INTO Empleado (CI, nombre, apellido, sexo, direccionCorta, cargoId, empleadoSupervisorId, sucursalId, fechaContrato, bonoFijoMensual, horaInicio, horaFin, cantidadDiasTrabajoPorSemana) VALUES
+--Por cada sucursal hay un gerente supervisor
+(68622131, 'Magaly', 'Albornoz', 'F', 'Casanova', 7, 15, 1, '2017-08-17', 497, 8, 15, 7),
+(78300211, 'Antonella', 'Zepeda', 'F', 'Psje. Los Coihues', 6, 15, 2, '2018-04-11', 368, 7, 14, 2),
+(97956359, 'Armin', 'Palma', 'M', 'Joselyn Herrera', 11, 15, 3, '2013-08-19', 495, 6, 17, 3),
+(13515887, 'Juan', 'Monsalve', 'M', 'Los Aromos', 5, 15, 4, '2018-05-24', 872, 7, 15, 4),
+(34962686, 'Diego', 'Cortés', 'M', 'Psje. Josefa Novoa', 6, 15, 5, '2014-07-14', 220, 9, 17, 5),
+(82127436, 'María', 'Montero', 'F', 'Avda. Manuel Antonio Matta', 14, 15, 6, '2014-06-29', 872, 6, 16, 3),
+(76170002, 'Javier', 'Mellado', 'M', 'Avda. Beatriz Díaz', 4, 15, 7, '2018-08-23', 503, 9, 19, 4),
+(42957001, 'Daniela', 'Montecinos', 'F', 'Av. Ricardo Pérez', 11, 15, 8, '2016-12-29', 264, 6, 20, 3),
+(40459503, 'Boris', 'Saldaña', 'M', 'Los Helechos', 13, 15, 9, '2016-12-01', 370, 8, 18, 7),
+(51660557, 'Nidia', 'Cerda', 'F', 'Juana Soto', 3, 15, 10, '2020-04-07', 250, 8, 17, 2),
+(88135331, 'Elizabeth', 'Gutiérrez', 'F', 'Calle Jorge Arias', 9, 15, 11, '2015-06-12', 809, 7, 20, 4),
+(93861517, 'Valentina', 'Díaz', 'F', 'Av. Jimmy Garcés', 8, 15, 12, '2015-09-15', 163, 10, 20, 7),
+(70033481, 'Maira', 'Sanhueza', 'F', 'Lynch', 7, 15, 13, '2018-12-11', 631, 9, 16, 3),
+(36938170, 'Omar', 'Suazo', 'M', 'Matilda Olivares', 12, 15, 14, '2011-10-22', 700, 10, 14, 2),
+(82246356, 'Silvia', 'Villalobos', 'F', 'Arturo Prat', 2, 15, 15, '2016-04-17', 642, 8, 17, 5),
+(32619689, 'Ana', 'Toledo', 'F', 'Los Alerces', 3, 15, 16, '2014-04-24', 567, 7, 15, 4),
+(8347330, 'José', 'Sánchez', 'M', 'Calle Camila Gallardo', 4, 15, 17, '2018-05-22', 724, 6, 20, 6),
+(71698837, 'Claudia', 'Aguirre', 'F', 'Av. Las Rosas', 3, 15, 18, '2021-07-25', 212, 7, 16, 1),
+(49679341, 'Julio', 'Silva', 'M', 'Avenida Susana Sandoval', 3, 15, 19, '2017-03-22', 512, 10, 14, 4),
+(33622391, 'Zoila', 'Espinoza', 'F', 'Calle Marcos Hidalgo', 9, 15, 20, '2013-06-09', 627, 6, 19, 3),
+
+--Los otros cargos de empleados, supervisan a los otros gerentes
+(24826513, 'Rolando', 'Contreras', 'M', 'María Barriga', 10, 13, 19, '2011-06-09', 771, 6, 18, 4),
+(57125592, 'Enrique', 'Jiménez', 'M', 'Pasaje Arturo Prat', 2, 17, 15, '2020-06-05', 278, 9, 16, 1),
+(47015660, 'Andrés', 'Ayala', 'M', 'Calle Picarte', 2, 9, 11, '2019-06-27', 146, 6, 18, 4),
+(80058851, 'Claudio', 'Rojas', 'M', 'Los Laureles', 13, 19, 10, '2011-02-09', 624, 6, 18, 5),
+(63111344, 'Jefferson', 'Fuentes', 'M', 'Los Alerces', 7, 11, 12, '2016-08-07', 365, 8, 15, 7),
+(21737107, 'Angelo', 'Hernández', 'M', 'Psje. María Concha', 7, 1, 1, '2017-03-27', 764, 7, 15, 3),
+(1772178, 'Alejandra', 'Valenzuela', 'F', 'Martha Barrera', 14, 1, 2, '2012-01-04', 550, 7, 14, 4),
+(87098378, 'Fernando', 'Salazar', 'M', 'Karin Montoya', 4, 12, 13, '2019-05-07', 300, 6, 20, 2),
+(1669174, 'Antonia', 'Cortez', 'F', 'Calle Las Manzanillas', 8, 20, 4, '2017-08-17', 269, 9, 16, 1),
+(64669736, 'Vicente', 'Pérez', 'M', 'Calle Esmeralda', 14, 8, 9, '2016-07-30', 708, 6, 18, 7),
+(85060196, 'Cecilia', 'Fernández', 'F', 'Las Rosas', 14, 1, 8, '2022-05-10', 727, 9, 18, 6),
+(87353308, 'Lorenzo', 'López', 'M', 'Calle Los Digitales', 8, 6, 6, '2010-09-20', 479, 9, 17, 4),
+(76255992, 'Cristóbal', 'Martínez', 'M', 'Avenida Marta Hormazábal', 4, 14, 9, '2023-09-20', 873, 6, 18, 4),
+(6278663, 'Rita', 'Muñoz', 'F', 'Florencia Ponce', 11, 9, 2, '2014-01-05', 643, 8, 19, 1),
+(65399681, 'Carlos', 'Becerra', 'M', 'Los Girasoles', 7, 5, 7, '2021-04-27', 646, 10, 18, 1),
+
+(62665215, 'Jhon', 'González', 'M', 'Calle Manuel Rodríguez', 8, 1, 3, '2012-10-10', 546, 6, 17, 2),
+(28658795, 'Rosa', 'Melo', 'F', 'José Miguel Carrera', 12, 1, 17, '2017-12-15', 568, 8, 15, 3),
+(81652648, 'Emilio', 'Olmos', 'M', 'Marco Flores', 11, 3, 15, '2020-10-27', 565, 6, 20, 7),
+(13446024, 'Gonzalo', 'Cea', 'M', 'Avenida Los Abedules', 12, 2, 8, '2013-01-06', 670, 9, 18, 7),
+(34425340, 'Josefa', 'Aros', 'F', 'Calle Manuel Montt', 11, 3, 17, '2023-02-04', 810, 8, 15, 7),
+(20728604, 'Jacqueline', 'Lara', 'F', 'Arturo Prat', 6, 18, 5, '2022-02-16', 682, 7, 18, 5),
+(76164237, 'Margarita', 'Zapata', 'F', 'Felipe Bravo', 16, 1, 20, '2016-05-20', 923, 8, 17, 2),
+(61560888, 'Debora', 'Mella', 'F', 'Magdalena Villegas', 2, 3, 18, '2011-09-16', 347, 6, 18, 7),
+(39062122, 'Bastián', 'Miranda', 'M', 'Jorge Vera', 10, 4, 16, '2020-01-14', 836, 8, 18, 4),
+(45399947, 'Carolina', 'Núñez', 'F', 'Caupolicán', 3, 16, 8, '2017-05-21', 450, 8, 16, 5),
+(73616316, 'Amelia', 'Sepúlveda', 'F', 'Sandra Campos', 10, 18, 18, '2012-03-10', 753, 6, 19, 1),
+(15570338, 'Lía', 'Godoy', 'F', 'Esmeralda', 9, 1, 19, '2013-08-28', 151, 20, 18, 1),
+(20892881, 'Gustavo', 'Gallardo', 'M', 'Calle Las Maravillas', 11, 5, 15, '2011-01-29', 866, 7, 16, 4),
+(69659501, 'Alexander', 'Ramírez', 'M', 'Calle María Sandoval', 2, 7, 17, '2022-01-06', 300, 8, 14, 6),
+(11229090, 'Sandra', 'Gamboa', 'F', 'Emma Espinoza', 11, 6, 20, '2021-12-27', 332, 6, 18, 3),
+
 
 INSERT INTO Producto(nombre, codigoBarra, descripcion, tipoPrecio, precioPor, esExentoIVA, categoriaId, marcaId) VALUES
 ('Coca-Cola Regular', 123456789, 'Refresco sabor cola', 'PorUnidad', 1.50, 0, 1, 1),
