@@ -961,9 +961,26 @@ INSERT INTO ClienteDireccion (clienteId, tipoDireccion, dirLinea1, ciudadId) VAL
 (80, 'Envio', 'Marcos Ortega 20', 12),
 
 --Clientes con dos direcciones 
-
-(81, 'Envio', 'Marcos Ortega 20', 12),
-(81, 'Facturacion', 'Calle Balmaceda 78 Piso 76', 13);
+(81, 'Envio', 'San Sebastian 15', 26),
+(81, 'Envio', 'Maldivia 30', 26);
+(82, 'Envio', 'San Carlos F25', 30),
+(82, 'Envio', 'Ruiz Pineda C.13', 30);
+(83, 'Envio', 'Puerto de San Lucas', 41),
+(83, 'Envio', 'Calle Ave Maria 453', 41);
+(84, 'Envio', 'Los medanos 17', 48),
+(84, 'Envio', 'Cristianos a la puerta', 48);
+(85, 'Envio', 'Manolitos', 53),
+(85, 'Envio', 'Calle Almendra', 53);
+(86, 'Envio', 'Hermanos Gonzales', 32),
+(86, 'Envio', 'Piso 15, Normandie', 32);
+(87, 'Envio', 'Ernestos 23', 52),
+(87, 'Envio', 'Calle Luciernaga Ortega', 52);
+(88, 'Envio', 'San Agustin', 19),
+(88, 'Envio', 'Av. Seguros Unidos', 19);
+(90, 'Envio', 'Av. Hernandez', 24),
+(90, 'Envio', 'Los Perez', 24);
+(91, 'Envio', 'Calle La Villa', 14),
+(91, 'Envio', 'Calle Salum', 14);
 
 INSERT INTO Carrito (clienteId, productoId, fechaAgregado, cantidad, precioPor)
 VALUES 
