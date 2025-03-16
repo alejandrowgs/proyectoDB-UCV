@@ -615,7 +615,7 @@ INSERT INTO Empleado (CI, nombre, apellido, sexo, direccionCorta, cargoId, emple
 (13446024, 'Gonzalo', 'Cea', 'M', 'Avenida Los Abedules', 12, 2, 8, '2013-01-06', 670, 9, 18, 7),
 (34425340, 'Josefa', 'Aros', 'F', 'Calle Manuel Montt', 11, 3, 17, '2023-02-04', 810, 8, 15, 7),
 (20728604, 'Jacqueline', 'Lara', 'F', 'Arturo Prat', 6, 18, 5, '2022-02-16', 682, 7, 18, 5),
-(76164237, 'Margarita', 'Zapata', 'F', 'Felipe Bravo', 16, 1, 20, '2016-05-20', 923, 8, 17, 2),
+(76164237, 'Margarita', 'Zapata', 'F', 'Felipe Bravo', 6, 1, 20, '2016-05-20', 923, 8, 17, 2),
 (61560888, 'Debora', 'Mella', 'F', 'Magdalena Villegas', 2, 3, 18, '2011-09-16', 347, 6, 18, 7),
 (39062122, 'Bastián', 'Miranda', 'M', 'Jorge Vera', 10, 4, 16, '2020-01-14', 836, 8, 18, 4),
 (45399947, 'Carolina', 'Núñez', 'F', 'Caupolicán', 3, 16, 8, '2017-05-21', 450, 8, 16, 5),
@@ -979,7 +979,6 @@ INSERT INTO ProductoRecomendadoParaProducto (productoId, productoRecomendadoId, 
 (222, 223, 'El Queso La Campiña es un excelente complemento para disfrutar con Pan La Fama en un desayuno nutritivo.'),
 (223, 224, 'El Jugo GAMA es ideal para acompañar tus galletas GAMA en un snack rápido y sabroso.');
 
-
 --ClienteDireccion
 
 INSERT INTO ClienteDireccion (clienteId, tipoDireccion, dirLinea1, ciudadId) VALUES
@@ -1207,13 +1206,6 @@ VALUES
 (30, 16, '2025-09-10', 1, 2.50),
 (30, 17, '2025-09-10', 1, 4.00),
 (30, 18, '2025-09-10', 1, 5.50);
-
-
---Facura 
-
-
-
-
 
 
 
