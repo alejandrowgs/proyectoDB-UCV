@@ -623,7 +623,7 @@ INSERT INTO Empleado (CI, nombre, apellido, sexo, direccionCorta, cargoId, emple
 (15570338, 'Lía', 'Godoy', 'F', 'Esmeralda', 9, 1, 19, '2013-08-28', 151, 20, 18, 1),
 (20892881, 'Gustavo', 'Gallardo', 'M', 'Calle Las Maravillas', 11, 5, 15, '2011-01-29', 866, 7, 16, 4),
 (69659501, 'Alexander', 'Ramírez', 'M', 'Calle María Sandoval', 2, 7, 17, '2022-01-06', 300, 8, 14, 6),
-(11229090, 'Sandra', 'Gamboa', 'F', 'Emma Espinoza', 11, 6, 20, '2021-12-27', 332, 6, 18, 3),
+(11229090, 'Sandra', 'Gamboa', 'F', 'Emma Espinoza', 11, 6, 20, '2021-12-27', 332, 6, 18, 3);
 
 
 INSERT INTO Producto(nombre, codigoBarra, descripcion, tipoPrecio, precioPor, esExentoIVA, categoriaId, marcaId) VALUES
