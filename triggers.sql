@@ -1,21 +1,22 @@
 --a. Inventario (al tener datos nuevos en ProveedorProducto, crea el registro si el producto no existe 
 --y en caso contrario sólo actualiza la cantidad)
 
-CREATE TRIGGER Inventario_Triggger
-ON ProveedorProducto
+CREATE TRIGGER Inventario_Trigger
+ON Producto
 AFTER INSERT
 AS
 BEGIN 
-    -- Insertar nuevos productos en la tabla Inventario si no existen
+    -- Insertar 5 unidades de nuevos productos en la tabla Inventario si no existen, de esa manera tenemos un Stock "Prueba"
     INSERT INTO Inventario (productoId, cantidad)
-    SELECT i.productoId, i.cantidad 
+    SELECT i.Id, 5 -- Agrega 5 unidades por producto
     FROM inserted i
     WHERE NOT EXISTS (
         SELECT 1 
         FROM Inventario inv 
-        WHERE inv.productoId = i.productoId
-    );--El procedimiento se encarga de sumar la cantidad en el inventario, asi que no es necesario 
-END;
+        WHERE inv.productoId = i.Id -- Verifica si el producto ya existe
+    );
+END;                --El procedimiento se encarga de sumar los productos al inventario cuando se haga compra a proveedores
+
 
 /*Factura y FacturaDetalle (en caso de ser orden online, orden detalle se copia por
 completo a factura detalle),
@@ -56,6 +57,70 @@ BEGIN
         inserted i
 END;
 
+CREATE TRIGGER RegistrarCompra_Trigger
+ON VentaFisica
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @facturaId INT, @clienteId INT, @fecha DATE, @productoId INT;
+
+    -- Obtener el facturaId de la fila insertada
+    SELECT @facturaId = facturaId
+    FROM inserted;
+
+    -- Obtener el clienteId y la fecha de la factura
+    SELECT @clienteId = clienteId, @fecha = fechaEmision
+    FROM Factura
+    WHERE id = @facturaId;
+
+    -- Insertar registros en HistorialClienteProducto para cada producto comprado
+    INSERT INTO HistorialClienteProducto (clienteId, productoId, fecha, tipoAccion)
+    SELECT @clienteId, productoId, @fecha, 'Compra'
+    FROM FacturaDetalle
+    WHERE facturaId = @facturaId;
+END;
+
+--ProductoRecomendadoParaCliente (si el cliente compra o busca más de 3 veces un producto en especifico.
+
+CREATE TRIGGER RecomendarProducto_Trigger
+ON HistorialClienteProducto
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @clienteId INT, @productoId INT, @acciones INT, @fechaRecomendacion DATE, @mensaje VARCHAR(255);
+
+    -- Obtener clienteId y productoId de la fila insertada
+    SELECT @clienteId = clienteId, @productoId = productoId
+    FROM inserted;
+
+    -- Contar el numero de veces que el cliente ha interactuado con el producto
+    SELECT @acciones = COUNT(*)
+    FROM HistorialClienteProducto
+    WHERE clienteId = @clienteId AND productoId = @productoId
+    GROUP BY clienteId, productoId;
+
+    IF @acciones = 3
+    BEGIN
+        -- Obtener la fecha de la tercera interaccion
+        SELECT @fechaRecomendacion = fecha
+        FROM HistorialClienteProducto
+        WHERE clienteId = @clienteId AND productoId = @productoId
+        ORDER BY fecha
+        OFFSET 2 ROWS FETCH NEXT 1 ROWS ONLY; -- Tercera interacción
+
+        SELECT @mensaje = mensaje
+        FROM ProductoRecomendadoParaProducto
+        WHERE productoId = @productoId;
+
+        -- Se inserta la recomendacion
+        INSERT INTO ProductoRecomendadoParaCliente (clienteId, productoRecomendadoId, fechaRecomendacion, mensaje)
+        SELECT @clienteId, productoRecomendadoId, @fechaRecomendacion, @mensaje
+        FROM ProductoRecomendadoParaProducto
+        WHERE productoId = @productoId;
+    END;
+END;
+
+
            
 --Trigger extra para que cada vez que se compre un producto se le reste al inventario 
 --Revisar que no de conflicto con el ultimo trigger 
@@ -65,7 +130,7 @@ On FacturaDetalle
 AFTER INSERT
 AS 
 BEGIN 
-	UPDATE Inteventario
+	UPDATE Inventario
 	SET cantidad = cantidad -inserted.cantidad
 	FROM Inventario
 	INNER JOIN inserted ON inventario.productoId=inserted.productoId;
