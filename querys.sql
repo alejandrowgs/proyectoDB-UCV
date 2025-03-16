@@ -6,28 +6,29 @@ información  de cada uno
 ingresos totales por ese tipo de envío, proporción de ingresos en relación al total de ingreso por envíos. 
 Las proporciones deben ser expresadas en porcentajes.*/
 
+
 -- Hare uso de: OrdenOnline(id, clienteId, nroOrden, fechaCreacion, tipoEnviold, facturaId) para los calculos
 SELECT TE.id, TE.nombreEnvio, TE.tiempoEstimadoEntrega, TE.costoEnvio, T1.cantidadVecesUsado, T2.proporcionDeUso, T3.ingresoTotalPorTipoEnvio, T5.IngresoEnRelacionAlTotalDeIngresoPorEnvio
 FROM  TipoEnvio TE, (SELECT COUNT(OO.tipoEnvioId) AS cantidadVecesUsado
                      FROM TipoEnvio TE, OrdenOnline OO
                      WHERE OO.tipoEnvioId IN (SELECT id FROM TipoEnvio)
                                               --No uso directo el alias asociado porque no se transfiera su uso entre consultas en el mismo nivel 
-                    ) AS T1, (SELECT TE.id, ((COUNT(OO.tipoEnvioId) * 100.0) / (SELECT COUNT(*) FROM OrdenOnline)) AS proporcionDeUso
+                    ) AS T1, (SELECT ((COUNT(OO.tipoEnvioId) * 100.0) / (SELECT COUNT(*) FROM OrdenOnline)) AS proporcionDeUso
                               FROM tipoEnvio TE
-                              JOIN OrdenOnline OO ON TE.id = OO.tipoEnvioId           --Temas de rendimiento uso Join
+                              JOIN OrdenOnline OO ON TE.id = OO.tipoEnvioId           --Por temas de rendimiento uso Join
                               GROUP BY TE.id
-                                              --Puedo agrupar por el id sin especificar el atributo en el Select?
-                             ) AS T2, (SELECT TE.id, (SUM(TE.costoEnvio)) AS ingresoTotalPorTipoEnvio
+                                              
+                             ) AS T2, (SELECT (SUM(TE.costoEnvio)) AS ingresoTotalPorTipoEnvio              --Puedo agrupar sin indicar en el select, porque aplicaria la misma nocion que para la funcion COUNT
                                        FROM tipoEnvio TE
                                        JOIN OrdenOnline OO ON TE.id = OO.tipoEnvioId
                                        GROUP BY TE.id     --Agrupo por envio para sumar su monto en filas de cada grupo
                                       
                                       ) AS T3, (SELECT (SUM(T4.ingresoTotalPorTipoEnvio)) AS IngresoEnRelacionAlTotalDeIngresoPorEnvio 
-                                                FROM (SELECT TE.id, (SUM(TE.costoEnvio)) AS ingresoTotalPorTipoEnvio
+                                                FROM (SELECT (SUM(TE.costoEnvio)) AS ingresoTotalPorTipoEnvio
                                                       FROM tipoEnvio TE
                                                       JOIN OrdenOnline OO ON TE.id = OO.tipoEnvioId
                                                       GROUP BY TE.id 
-                                                     ) AS T4          -- Recalculando T3, ya que el Scope no permite reutilizarla :(
+                                                     ) AS T4          -- Recalculando T3, ya que el Scope por usar Ti no permite reutilizar
                                                 
                                                ) AS T5    --Suma del costo por cada tipo de envio/ suma de la suma del costo por tipo de envio x.x
 
