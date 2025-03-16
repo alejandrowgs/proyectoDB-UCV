@@ -363,7 +363,7 @@ INSERT INTO Cargo (id, nombre, descripcion, salarioBasePorHora) VALUES
 SET IDENTITY_INSERT Cargo OFF;
 
 --Cliente
-INSERT INTO cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRegistro) VALUES
+INSERT INTO Cliente(CI, nombre, apellido, correo, sexo, fechaNacimiento, fechaRegistro) VALUES
 (25567845,'Luisa','Carmona','lc@gmail.com','F','1996/05/03','2024/08/03'),
 (5579825,'Pedro','Perez','pp@gmail.com','M','1962/06/02','2023/10/09'),
 (5487769,'Jose','Paez','jp@gmail.com','M','1962/05/03','2020/07/02'),

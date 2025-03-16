@@ -97,3 +97,34 @@ SET @PrintMessage = 'Verano EN GaMa';
 PRINT @PrintMessage;
 GO
 */
+
+
+/*J.  Un  cliente  desea  comprar  productos  al  mayor  y  solicitó  un  presupuesto. Los productos a mostrar 
+deben  ser  de  categoría  Chucherías.  Listar  nombre,  precio  actual,  precio con descuento del 10% 
+por ser al mayor y para el stock se debe imprimir “Últimos disponibles” si es menor de 10, “Pocos 
+disponibles” si es menor de 20 y “Disponible” de caso contrario. */
+
+                                                                      --Si el precio con descuento resultó alguno de estos
+SELECT P.nombre,  P.precioPor as precioActual, T1.precioConDescuento, (CASE 
+                                                                       WHEN T1.precioConDescuento < 10 'Últimos disponibles'
+                                                                       WHEN T1.precioConDescuento < 20 'Pocos disponibles'
+                                                                       ELSE 'Disponible'  
+                                                                      ) AS stock
+--Preferi hacer una consulta en el From para no llenar tanto la externa para filtrar el descuento
+FROM Producto P, Categoria Cat, PromoEspecializada PE, (SELECT P.precioPor AS precioConDescuento
+                                                      FROM PromoEspecializada PE, Promo Pro, Categoria Cat
+                                                      --Comencé a relacionar con promoEspecializada para poder llegar hasta promo 
+                                                      --y filtrar los que cumplan con ese descuento 
+                                                      WHERE PE.productoId IN (SELECT id FROM Producto)      
+                                                      AND PE.promoId IN (SELECT id FROM Promo)
+                                                      AND PE.categoriaId IN (SELECT id FROM Categoría)
+                                                      AND Pro.tipoDescuento = 'Porcentaje'
+                                                      AND Pro.valorDescuento = 10
+                                                      --Agregue la cat a cumplir, porque sino traeria todos los productos sin importar la cat 
+                                                      AND Cat.nombre = 'Chucherías'   
+                                                     ) as T1
+WHERE P.categoriaId IN (SELECT id FROM Categoria)
+--La cat aqui sera para filtrar el nombre y el precio actual
+AND Cat.nombre = 'Chucherías'
+
+

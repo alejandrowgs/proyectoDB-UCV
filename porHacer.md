@@ -1,10 +1,10 @@
 *Querys*      D - E - G poseen subquerys
 
-A - B - E -G -H - I - J   
+A - B - E -G -H - I  
 
 *HECHAS*
 
-C - D - F
+C - D - F - J 
 
 *Functions*
 *HECHAS*
