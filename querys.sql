@@ -32,6 +32,75 @@ FROM  TipoEnvio TE, (SELECT COUNT(OO.tipoEnvioId) AS cantidadVecesUsado
                                                 
                                                ) AS T5    --Suma del costo por cada tipo de envio/ suma de la suma del costo por tipo de envio x.x
 
+--CONSULTA B.
+WITH TotalGastos AS ( --Tabla temporal
+    -- Total en compras online
+    SELECT 
+        c.id AS clienteId,
+        SUM(f.montoTotal) AS TotalOnline,
+        0 AS TotalFisica
+    FROM Cliente c
+    INNER JOIN Factura f ON c.id = f.clienteId
+    INNER JOIN OrdenOnline oo ON f.id = oo.facturaId
+    WHERE f.fechaEmision >= DATEADD(YEAR, -1, GETDATE()) -- Último año
+    GROUP BY c.id
+
+    UNION ALL
+
+    -- Total en compras fisicas
+    SELECT 
+        c.id AS clienteId,
+        0 AS TotalOnline,
+        SUM(f.montoTotal) AS TotalFisica
+    FROM Cliente c
+    INNER JOIN Factura f ON c.id = f.clienteId
+    INNER JOIN VentaFisica vf ON f.id = vf.facturaId
+    WHERE f.fechaEmision >= DATEADD(YEAR, -1, GETDATE()) 
+    GROUP BY c.id
+),
+GastoTotal AS (
+    SELECT 
+        tg.clienteId,
+        SUM(tg.TotalOnline) AS TotalGastadoOnline,
+        SUM(tg.TotalFisica) AS TotalGastadoFisica
+    FROM TotalGastos tg
+    GROUP BY tg.clienteId
+),
+MetodoPagoPredilecto AS (
+    -- Metodo de pago predilecto
+    SELECT 
+        p.facturaId,
+        c.id AS clienteId,
+        fp.nombre AS MetodoPago,
+        COUNT(*) AS Frecuencia
+    FROM Cliente c
+    INNER JOIN Factura f ON c.id = f.clienteId
+    INNER JOIN Pago p ON f.id = p.facturaId
+    INNER JOIN FormaPago fp ON p.metodoPagoId = fp.id
+    WHERE f.fechaEmision >= DATEADD(YEAR, -1, GETDATE()) -- ultimo año
+    GROUP BY c.id, fp.nombre, p.facturaId
+),
+MetodoPagoCliente AS (
+    -- Metodo de pago mas frecuente
+    SELECT 
+        clienteId,
+        MetodoPago,
+        MAX(Frecuencia) AS MaxFrecuencia
+    FROM MetodoPagoPredilecto
+    GROUP BY clienteId, MetodoPago
+)
+
+-- Consultamos las tablas temporales
+SELECT 
+    c.nombre AS NombreCliente,
+    c.apellido AS ApellidoCliente,
+    gt.TotalGastadoOnline,
+    gt.TotalGastadoFisica,
+    mpc.MetodoPago AS MetodoPagoPredilecto
+FROM Cliente c
+INNER JOIN GastoTotal gt ON c.id = gt.clienteId
+LEFT JOIN MetodoPagoCliente mpc ON c.id = mpc.clienteId;
+
 
 /*C.  Obtener  el  nombre  del  producto,  la  categoría  y  la  marca  de  los  productos  que
 han  sido recomendados para clientes que han comprado al menos una vez en el último mes, 
