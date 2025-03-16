@@ -212,3 +212,41 @@ BEGIN
     FROM inserted;
 END;
 GO
+
+-- trigger E
+
+
+
+CREATE TRIGGER trg_devolucion
+ON FacturaDetalle
+AFTER DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Registramos la devolucion
+        INSERT INTO FacturaDetalle (facturaId,productoId,cantidad,precioPor)
+		SELECT d.facturaId,d.productoId,d.cantidad,d.precioPor  
+        FROM deleted d
+        INNER JOIN inventario i 
+            ON d.productoId = i.productoId;
+        
+        -- Actualizamos el inventario
+        UPDATE i
+        SET cantidad = i.cantidad + d.Cantidad
+        FROM Inventario i
+        INNER JOIN deleted d 
+            ON i.ProductoId = d.ProductoId
+		WHERE i.productoId = d.productoId
+        
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;  -- Propaga el error al cliente
+    END CATCH
+END;
+
