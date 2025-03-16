@@ -153,3 +153,62 @@ BEGIN
   END;
 END;
 --EXECUTE FUNCTION validarP();
+
+--trigger d
+
+
+CREATE TRIGGER trg_ValidarStockOrdenDetalle
+ON OrdenDetalle -- FacturaDetalle
+INSTEAD OF INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- Variables para control de errores
+    DECLARE @StockCero BIT = 0,
+            @StockInsuficiente BIT = 0;
+    
+    -- Aquí verifico si hay productos que no tienen stock disponible
+    IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        LEFT JOIN Inventario inv 
+            ON i.ProductoID = inv.ProductoID 
+        WHERE COALESCE(inv.cantidad, 0) = 0  -- Parece que con esto convertimos el inventario nulo a 0 en caso de que no exista
+    )
+    BEGIN
+        SET @StockCero = 1;
+    END
+    
+    -- Aquí verifico si la cantidad solicitada es mayor que la disponible en inventario
+    IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        INNER JOIN Inventario inv 
+            ON i.ProductoID = inv.ProductoID 
+        WHERE inv.cantidad < i.cantidad 
+        AND inv.cantidad > 0  -- Excluimos los que ya están en 0
+    )
+    BEGIN
+        SET @StockInsuficiente = 1;
+    END
+    
+    -- Si no hay stock disponible, lanzo un error y detengo la inserción
+    IF @StockCero = 1
+    BEGIN
+        RAISERROR('El producto no está disponible por los momentos', 16, 1);
+        RETURN;
+    END
+    -- Si hay stock insuficiente, lanzo un error y detengo la inserción
+    ELSE IF @StockInsuficiente = 1
+    BEGIN
+        RAISERROR('No hay unidades suficientes del producto para esta compra', 16, 1);
+        RETURN;
+    END
+    
+    -- Si todas las validaciones pasan, procedo con la inserción original en la tabla OrdenDetalle
+    INSERT INTO OrdenDetalle (ordenId, productoId, cantidad, precioPor)
+    SELECT ordenId, productoId, cantidad, precioPor
+    FROM inserted;
+END;
+GO
