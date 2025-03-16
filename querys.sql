@@ -112,17 +112,17 @@ SELECT P.nombre,  P.precioPor as precioActual, T1.precioConDescuento, (CASE
                                                                       ) AS stock
 --Preferi hacer una consulta en el From para no llenar tanto la externa para filtrar el descuento
 FROM Producto P, Categoria Cat, PromoEspecializada PE, (SELECT P.precioPor AS precioConDescuento
-                                                      FROM PromoEspecializada PE, Promo Pro, Categoria Cat
-                                                      --Comencé a relacionar con promoEspecializada para poder llegar hasta promo 
-                                                      --y filtrar los que cumplan con ese descuento 
-                                                      WHERE PE.productoId IN (SELECT id FROM Producto)      
-                                                      AND PE.promoId IN (SELECT id FROM Promo)
-                                                      AND PE.categoriaId IN (SELECT id FROM Categoría)
-                                                      AND Pro.tipoDescuento = 'Porcentaje'
-                                                      AND Pro.valorDescuento = 10
-                                                      --Agregue la cat a cumplir, porque sino traeria todos los productos sin importar la cat 
-                                                      AND Cat.nombre = 'Chucherías'   
-                                                     ) as T1
+                                                        FROM PromoEspecializada PE, Promo Pro, Categoria Cat
+                                                        --Comencé a relacionar con promoEspecializada para poder llegar hasta promo 
+                                                        --y filtrar los que cumplan con ese descuento 
+                                                        WHERE PE.productoId IN (SELECT id FROM Producto)      
+                                                        AND PE.promoId IN (SELECT id FROM Promo)
+                                                        AND PE.categoriaId IN (SELECT id FROM Categoría)
+                                                        AND Pro.tipoDescuento = 'Porcentaje'
+                                                        AND Pro.valorDescuento = 10
+                                                        --Agregue la cat a cumplir, porque sino traeria todos los productos sin importar la cat 
+                                                        AND Cat.nombre = 'Chucherías'   
+                                                      ) as T1
 WHERE P.categoriaId IN (SELECT id FROM Categoria)
 --La cat aqui sera para filtrar el nombre y el precio actual
 AND Cat.nombre = 'Chucherías'

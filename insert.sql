@@ -615,7 +615,7 @@ INSERT INTO Empleado (CI, nombre, apellido, sexo, direccionCorta, cargoId, emple
 (13446024, 'Gonzalo', 'Cea', 'M', 'Avenida Los Abedules', 12, 2, 8, '2013-01-06', 670, 9, 18, 7),
 (34425340, 'Josefa', 'Aros', 'F', 'Calle Manuel Montt', 11, 3, 17, '2023-02-04', 810, 8, 15, 7),
 (20728604, 'Jacqueline', 'Lara', 'F', 'Arturo Prat', 6, 18, 5, '2022-02-16', 682, 7, 18, 5),
-(76164237, 'Margarita', 'Zapata', 'F', 'Felipe Bravo', 16, 1, 20, '2016-05-20', 923, 8, 17, 2),
+(76164237, 'Margarita', 'Zapata', 'F', 'Felipe Bravo', 6, 1, 20, '2016-05-20', 923, 8, 17, 2),
 (61560888, 'Debora', 'Mella', 'F', 'Magdalena Villegas', 2, 3, 18, '2011-09-16', 347, 6, 18, 7),
 (39062122, 'Bastián', 'Miranda', 'M', 'Jorge Vera', 10, 4, 16, '2020-01-14', 836, 8, 18, 4),
 (45399947, 'Carolina', 'Núñez', 'F', 'Caupolicán', 3, 16, 8, '2017-05-21', 450, 8, 16, 5),
@@ -875,7 +875,6 @@ INSERT INTO Producto(nombre, codigoBarra, descripcion, tipoPrecio, precioPor, es
 ('GAMA Agua', 345678983, 'Agua mineral GAMA', 'PorUnidad', 1.00, 0, 1, 21),
 ('GAMA Vino', 345678984, 'Vino tinto GAMA', 'PorUnidad', 10.00, 0, 1, 21),
 ('GAMA Cerveza', 345678985, 'Cerveza GAMA', 'PorUnidad', 2.00, 0, 1, 21);
-
 --ProductoRecomendadoProducto
 
 INSERT INTO ProductoRecomendadoParaProducto (productoId, productoRecomendadoId, mensaje) VALUES
@@ -979,7 +978,6 @@ INSERT INTO ProductoRecomendadoParaProducto (productoId, productoRecomendadoId, 
 (221, 222, 'La Pasta GAMA es ideal para acompañar con Salsa Pomarrosa para una comida deliciosa.'),
 (222, 223, 'El Queso La Campiña es un excelente complemento para disfrutar con Pan La Fama en un desayuno nutritivo.'),
 (223, 224, 'El Jugo GAMA es ideal para acompañar tus galletas GAMA en un snack rápido y sabroso.');
-
 
 --ClienteDireccion
 
@@ -1249,6 +1247,7 @@ VALUES
 (100, 20, '2024-11-15', 2, 1.50),
 (100, 21, '2024-11-15', 3, 3.00);
 
+<<<<<<< HEAD
 --Facura 
 
 SET IDENTITY_INSERT Factura ON;
@@ -1381,3 +1380,7 @@ VALUES
 (544, 10),  
 (545, 11),  
 (547, 12);  
+=======
+
+
+>>>>>>> 4e79e955e3c08c88b0237fe3cce2f70ffa6cf00b
