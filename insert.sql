@@ -893,6 +893,30 @@ INSERT INTO Producto(nombre, codigoBarra, descripcion, tipoPrecio, precioPor, es
 ('GAMA Agua', 345678983, 'Agua mineral GAMA', 'PorUnidad', 1.00, 0, 1, 21),
 ('GAMA Vino', 345678984, 'Vino tinto GAMA', 'PorUnidad', 10.00, 0, 1, 21),
 ('GAMA Cerveza', 345678985, 'Cerveza GAMA', 'PorUnidad', 2.00, 0, 1, 21);
+
+--40 promos, 200 productos, 30 cat, 63 marcas
+INSERT INTO promoEspecializada(promoId, productoId, categoriaId, marcaId) VALUES
+(1, 30, 19, 3)
+(5, 63, 25, 2)
+(17, 58, 21, 46)
+(35, 101, 16, 60)
+(27, 88, 24, 33)
+(25, 157, 18, 59)
+(22, 190, 26, 61)
+(15, 15, 15, 15)
+(21, 63, 28, 14)
+(31, 175, 27, 51)
+(33, 222, 19, 24)
+(11, 4, 30, 26)
+(9, 131, 15, 29)
+(7, 40, 23, 39)
+(28, 60, 9, 59)
+(4, 80, 4, 46)
+(3, 95, 3, 35)
+(29, 23, 12, 21)
+(14, 148, 14, 27)
+(27, 156, 16, 19)
+
 --ProductoRecomendadoProducto
 
 INSERT INTO ProductoRecomendadoParaProducto (productoId, productoRecomendadoId, mensaje) VALUES
