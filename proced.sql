@@ -47,14 +47,25 @@ END;
 CREATE PROC agregaProductoAFactura(@facturaId INT, @productoId INT, @cantidad INT, @precioPor DECIMAL(10,2))
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM VentaFisica WHERE facturaId = @facturaId)
+
+     IF NOT EXISTS (SELECT 1 FROM VentaFisica WHERE facturaId = @facturaId)      --Quiere decir que si fue de VF
     BEGIN
+        RAISERROR ('No existe la factura indicada', @facturaId);
+    END;
+    --Valido si existe o no por separado, por errores de anidamiento al validar eso
+
+    IF NOT EXISTS (SELECT 1 FROM Producto WHERE id = @productoId)   
+    BEGIN
+        RAISERROR ('El producto no existe', @productoId);
+        RETURN;
+    END;
+
+    --No valido si existe, porque con que no entre al no existe quiere decir que si hay factura existente
+        --So agrego producto para crear la factura fisica
         -- A cada parametro de la tabla Factura detalle, le asignare los pasados por parametro
-        INSERT INTO FacturaDetalle(facturaId, productoId, cantidad, precioPor) 
-        VALUES (@facturaId, @productoId, @cantidad, @precioPor)
-    END
-    ELSE RETURN;        --Aunque no es la mejor practica para atacar el error de sino llega a ser factura fisica.
-                        --No quise mostrar mensaje de error porque no lo piden
+    INSERT INTO FacturaDetalle(facturaId, productoId, cantidad, precioPor) 
+    VALUES (@facturaId, @productoId, @cantidad, @precioPor)
+    
 END;
 
---EXEC Para no añadir los valores de los parametros manual, como podria hacer? 
+--EXEC
