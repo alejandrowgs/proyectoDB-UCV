@@ -42,7 +42,7 @@ WITH TotalGastos AS ( --Tabla temporal
     FROM Cliente c
     INNER JOIN Factura f ON c.id = f.clienteId
     INNER JOIN OrdenOnline oo ON f.id = oo.facturaId
-    WHERE f.fechaEmision >= DATEADD(YEAR, -1, GETDATE()) -- Último año
+    WHERE f.fechaEmision >= DATEADD(YEAR, -1, GETDATE()) -- ultimo año
     GROUP BY c.id
 
     UNION ALL
@@ -167,6 +167,89 @@ WHERE E.id IN( SELECT E.id
                                     ORDER BY C.salarioBasePorHora DESC)
                         
             )
+
+--CONSULTA E 
+WITH ProductosAdquiridos AS (
+    -- Obtener productos adquiridos por clientes
+    SELECT
+        f.clienteId,
+        fd.productoId,
+        f.fechaEmision AS fechaCompra,
+        c.CI,
+        c.nombre AS NombreCliente,
+        c.sexo,
+        p.nombre AS NombreProducto,
+        cat.nombre AS Categoria,
+        m.nombre AS Marca
+    FROM Factura f
+    INNER JOIN FacturaDetalle fd ON f.id = fd.facturaId
+    INNER JOIN Cliente c ON f.clienteId = c.id
+    INNER JOIN Producto p ON fd.productoId = p.id
+    INNER JOIN Categoria cat ON p.categoriaId = cat.id
+    INNER JOIN Marca m ON p.marcaId = m.id
+),
+ProductosPorRecomendacion AS (
+    SELECT 
+        pac.clienteId,
+        pac.productoRecomendadoId AS productoId,
+        pac.fechaRecomendacion
+    FROM ProductoRecomendadoParaCliente pac
+),
+ClasificacionProductos AS (
+    -- Clasificar productos
+    SELECT 
+        pa.clienteId,
+        pa.CI,
+        pa.NombreCliente,
+        pa.sexo,
+        pa.NombreProducto,
+        pa.Categoria,
+        pa.Marca,
+        CASE 
+            WHEN pr.fechaRecomendacion IS NOT NULL AND pa.fechaCompra > pr.fechaRecomendacion THEN 1
+            ELSE 0
+        END AS EsPorRecomendacion
+    FROM ProductosAdquiridos pa
+    LEFT JOIN ProductosPorRecomendacion pr 
+        ON pa.clienteId = pr.clienteId AND pa.productoId = pr.productoId
+),
+ConteoPorCliente AS (
+    -- Contar productos recomendados y no recomendados
+    SELECT 
+        clienteId,
+        CI,
+        NombreCliente,
+        sexo,
+        SUM(CASE WHEN EsPorRecomendacion = 1 THEN 1 ELSE 0 END) AS ProductosRecomendados,
+        SUM(CASE WHEN EsPorRecomendacion = 0 THEN 1 ELSE 0 END) AS ProductosNoRecomendados,
+        COUNT(*) AS TotalProductos
+    FROM ClasificacionProductos
+    GROUP BY clienteId, CI, NombreCliente, sexo
+),
+ProporcionPorCliente AS (
+    -- Calcular proporciones manualmente
+    SELECT 
+        clienteId,
+        CI,
+        NombreCliente,
+        sexo,
+        ProductosRecomendados,
+        ProductosNoRecomendados,
+        CONCAT(CAST((CAST(ProductosRecomendados AS FLOAT) / NULLIF(TotalProductos, 0)) * 100 AS VARCHAR), '%') AS ProporcionRecomendados,
+        CONCAT(CAST((CAST(ProductosNoRecomendados AS FLOAT) / NULLIF(TotalProductos, 0)) * 100 AS VARCHAR), '%') AS ProporcionNoRecomendados
+    FROM ConteoPorCliente
+)
+-- Resultados
+SELECT 
+    CI,
+    NombreCliente,
+    sexo,
+    ProductosRecomendados,
+    ProductosNoRecomendados,
+    ProporcionRecomendados,
+    ProporcionNoRecomendados
+FROM ProporcionPorCliente
+ORDER BY NombreCliente;
 
 
 /*F.  Los  directivos  desean  saber  cuáles  productos  marca  Gama  fueron  comprados  en  los  meses  
