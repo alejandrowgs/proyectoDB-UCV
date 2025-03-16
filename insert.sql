@@ -554,17 +554,17 @@ INSERT INTO Sucursal (nombre, direccion, telefono, horaAbrir, horaCerrar, ciudad
 ('Express Caurimare','Av. Principal de Caurimare con Calle “D”. Parcela J 1B, Urbanizacion Caurimare. El Cafetal, Municipio Baruta.', 02126648571, 00, 23, 47),
 ('Express Chuao','Av. Araure con calle Las Lomas, C.C. Chuao, locales del 1 al 5, Urb. Chuao.', 02123124559,00, 23 ,47),
 ('Express El Paraiso','Urbanización El Paraíso. Av. José Antonio Paez con Av. "H".', 02122168853 ,00 ,23 ,47),
-('Express La Urbina', 'Calle 5 con Calle 7.Parcela B2-15-16. La Urbina Sur.', 02123511783, 00 ,23 , 49); 
+('Express La Urbina', 'Calle 5 con Calle 7.Parcela B2-15-16. La Urbina Sur.', 02123511783, 00 ,23 , 49),
 
-('Vizcaya', 'Av. La Guairita con calle La Lomita, C.C. Vizcaya, nivel PB', 02122854669, 00 ,23 , 47); 
-('Express San Bernardino', 'Av. Vollmer con la Av. Caracas, San Bernardino', 02127984612, 00 ,23 , 49); 
-('Express La Jolla', 'Boulevard La Jolla, C.C. Express Nivel PB, Local E1', 02124651201, 00 ,23 , 48); 
-('Plus La Trinidad', 'Calle Camino del Váquiro, Urb. Granjerías de La Trinidad', 02126311225, 00 ,23 , 48); 
-('Express Secubán Norte', 'Av. Los Chorros con 10ma. Transversal, C.C Galerías Sebucán', 02122847669, 00 ,23 , 48); 
-('Panamericana', 'Kilómetro 16, Carretera Panamericana, Municipio Los Salias', 02125594661, 00 ,23 , 49); 
-('Express La Castellana', 'Entre Av. Coromoto y Av. Sur de Altamira', 02123312545, 00 ,23 , 48); 
-('La Tahona', 'Urb. La Tahona, calle la solera, C.C. La Tahona', 02125514487, 00 ,23 , 48); 
-('Express Santa María', 'Kilómetro 3 Carretera Petare Guarenas,', 02124657981, 00 ,23 , 48); 
+('Vizcaya', 'Av. La Guairita con calle La Lomita, C.C. Vizcaya, nivel PB', 02122854669, 00 ,23 , 47),
+('Express San Bernardino', 'Av. Vollmer con la Av. Caracas, San Bernardino', 02127984612, 00 ,23 , 49),
+('Express La Jolla', 'Boulevard La Jolla, C.C. Express Nivel PB, Local E1', 02124651201, 00 ,23 , 48),
+('Plus La Trinidad', 'Calle Camino del Váquiro, Urb. Granjerías de La Trinidad', 02126311225, 00 ,23 , 48),
+('Express Secubán Norte', 'Av. Los Chorros con 10ma. Transversal, C.C Galerías Sebucán', 02122847669, 00 ,23 , 48),
+('Panamericana', 'Kilómetro 16, Carretera Panamericana, Municipio Los Salias', 02125594661, 00 ,23 , 49), 
+('Express La Castellana', 'Entre Av. Coromoto y Av. Sur de Altamira', 02123312545, 00 ,23 , 48),
+('La Tahona', 'Urb. La Tahona, calle la solera, C.C. La Tahona', 02125514487, 00 ,23 , 48),
+('Express Santa María', 'Kilómetro 3 Carretera Petare Guarenas,', 02124657981, 00 ,23 , 48),
 ('Santa Fe', 'Av. José María Vargas con calle Santa Fe', 02122127410, 00 ,23 , 47); 
 
 --Empleado
@@ -1067,23 +1067,23 @@ INSERT INTO ClienteDireccion (clienteId, tipoDireccion, dirLinea1, ciudadId) VAL
 
 --Clientes con dos direcciones 
 (81, 'Envio', 'San Sebastian 15', 26),
-(81, 'Envio', 'Maldivia 30', 26);
+(81, 'Envio', 'Maldivia 30', 26),
 (82, 'Envio', 'San Carlos F25', 30),
-(82, 'Envio', 'Ruiz Pineda C.13', 30);
+(82, 'Envio', 'Ruiz Pineda C.13', 30),
 (83, 'Envio', 'Puerto de San Lucas', 41),
-(83, 'Envio', 'Calle Ave Maria 453', 41);
+(83, 'Envio', 'Calle Ave Maria 453', 41),
 (84, 'Envio', 'Los medanos 17', 48),
-(84, 'Envio', 'Cristianos a la puerta', 48);
+(84, 'Envio', 'Cristianos a la puerta', 48),
 (85, 'Envio', 'Manolitos', 53),
-(85, 'Envio', 'Calle Almendra', 53);
+(85, 'Envio', 'Calle Almendra', 53),
 (86, 'Envio', 'Hermanos Gonzales', 32),
-(86, 'Envio', 'Piso 15, Normandie', 32);
+(86, 'Envio', 'Piso 15, Normandie', 32),
 (87, 'Envio', 'Ernestos 23', 52),
-(87, 'Envio', 'Calle Luciernaga Ortega', 52);
+(87, 'Envio', 'Calle Luciernaga Ortega', 52),
 (88, 'Envio', 'San Agustin', 19),
-(88, 'Envio', 'Av. Seguros Unidos', 19);
+(88, 'Envio', 'Av. Seguros Unidos', 19),
 (90, 'Envio', 'Av. Hernandez', 24),
-(90, 'Envio', 'Los Perez', 24);
+(90, 'Envio', 'Los Perez', 24),
 (91, 'Envio', 'Calle La Villa', 14),
 (91, 'Envio', 'Calle Salum', 14);
 
@@ -1210,9 +1210,7 @@ VALUES
 (30, 18, '2025-09-10', 1, 5.50);
 
 
-
-
-
+--Facura 
 
 
 

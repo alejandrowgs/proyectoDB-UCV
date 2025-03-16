@@ -56,7 +56,7 @@ AS
 BEGIN
     DECLARE @montoIVA DECIMAL(10, 2) = 0;
 
-    -- Calcular el total de IVA para productos no exentos en la factura
+    -- Calcular el total de IVA
     SELECT @montoIVA = SUM(
         CASE 
             WHEN p.esExentoIVA = 0 THEN (fd.cantidad * fd.precioPor * 0.03) 

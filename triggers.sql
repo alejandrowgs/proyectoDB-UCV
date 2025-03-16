@@ -26,7 +26,7 @@ ON Factura
 AFTER INSERT
 AS
 BEGIN
-    -- Llenar FacturaDetalle con los detalles de los productos del carrito relacionados con la factura
+    -- Llenar FacturaDetalle con los detalles de los productos del carrito relacionados con la factura, ya que este tiene de una vez el IDCliente
     INSERT INTO FacturaDetalle (facturaId, productoId, cantidad, precioPor)
     SELECT 
         i.id AS facturaId, 
