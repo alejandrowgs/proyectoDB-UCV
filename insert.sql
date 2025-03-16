@@ -875,7 +875,6 @@ INSERT INTO Producto(nombre, codigoBarra, descripcion, tipoPrecio, precioPor, es
 ('GAMA Agua', 345678983, 'Agua mineral GAMA', 'PorUnidad', 1.00, 0, 1, 21),
 ('GAMA Vino', 345678984, 'Vino tinto GAMA', 'PorUnidad', 10.00, 0, 1, 21),
 ('GAMA Cerveza', 345678985, 'Cerveza GAMA', 'PorUnidad', 2.00, 0, 1, 21);
-
 --ProductoRecomendadoProducto
 
 INSERT INTO ProductoRecomendadoParaProducto (productoId, productoRecomendadoId, mensaje) VALUES
