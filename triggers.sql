@@ -126,14 +126,14 @@ END;
 --Revisar que no de conflicto con el ultimo trigger 
 
 CREATE TRIGGER ActualizarInventario
-On FacturaDetalle
+ON FacturaDetalle
 AFTER INSERT
 AS 
 BEGIN 
-	UPDATE Inventario
-	SET cantidad = cantidad -inserted.cantidad
-	FROM Inventario
-	INNER JOIN inserted ON inventario.productoId=inserted.productoId;
+    UPDATE inv
+    SET inv.cantidad = inv.cantidad - i.cantidad
+    FROM Inventario inv
+    INNER JOIN inserted i ON inv.productoId = i.productoId;
 END;
 
 /*b. Al comprar un producto al proveedor, actualizar el precioPor del Producto tomando como base 
