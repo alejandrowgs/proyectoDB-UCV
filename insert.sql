@@ -231,7 +231,7 @@ INSERT INTO Categoria (id, nombre, descripcion) VALUES
 (12, 'Mascotas', 'Alimentos y accesorios para mascotas'),
 (13, 'Farmacia', 'Medicamentos y productos de salud'),
 (14, 'Hogar', 'Utensilios y articulos para el hogar'),
-(15, 'Electrodomesticos', 'Pequenos electrodomesticos'),
+(15, 'Electrónica', 'Pequenos electrodomesticos'),
 (16, 'Bebes', 'Panales, leches y productos para bebes'),
 (17, 'Helados', 'Helados y postres congelados'),
 (18, 'Cafe e Infusiones', 'Cafe, te y bebidas calientes'),
