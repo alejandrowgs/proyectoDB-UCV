@@ -227,8 +227,7 @@ ConteoPorCliente AS (
     GROUP BY clienteId, CI, NombreCliente, sexo
 ),
 ProporcionPorCliente AS (
-    -- Calcular proporciones manualmente
-    SELECT 
+    -- Calcular proporciones
         clienteId,
         CI,
         NombreCliente,
