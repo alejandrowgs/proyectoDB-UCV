@@ -283,59 +283,7 @@ PRINT @PrintMessage;
 GO
 */
 
-/*H. Calcular el porcentaje de clientes que han realizado una segunda compra dentro de los 30 días 
-posteriores a su primera compra.*/
-
---Relacion entre cliente y factura (por tener la fecha)
---Factura(id, fechaEmisión, clienteId, subTotal, montoDescuentoTotal, porcentajeIVA, montoIVA, montoTotal)
-
-SELECT ((COUNT(DISTINC(C.id)) * 100) / SELECT (COUNT(DISTINCT(F.clienteId)) FROM Factura F) AS CantidadClientesQueRealizaron2daCompra
-FROM Factura F, (SELECT MIN(F1.fechaEmision) AS primeraCompra           --Misma nocion que para el Count y el uso de Gruop By
-                 FROM Factura F1
-                 WHERE F1.clienteId IN (SELECT id FROM Cliente)
-                 GROUP BY F1.clienteId;              --**
-
-                ) AS T1, (SELECT MIN(F2.fechaEmision) AS segundaCompra
-                          FROM Factura F2
-                          WHERE F2.clienteId IN (SELECT id FROM Cliente)
-                          AND F2.clienteId = F1.clienteId
-                          AND F2.segundaCompra > F1.primeraCompra
-                          GROUP BY F1.clienteId;
-                         ) AS T2
-JOIN Cliente C ON F.clienteId = C.id
-WHERE DATEDIFF(day, T1.primeraCompra, T2.segundaCompra) <= 30
-GROUP BY C.id
-
-/*J.  Un  cliente  desea  comprar  productos  al  mayor  y  solicitó  un  presupuesto. Los productos a mostrar 
-deben  ser  de  categoría  Chucherías.  Listar  nombre,  precio  actual,  precio con descuento del 10% 
-por ser al mayor y para el stock se debe imprimir “Últimos disponibles” si es menor de 10, “Pocos 
-disponibles” si es menor de 20 y “Disponible” de caso contrario. */
-
-                                                                      --Si el precio con descuento resultó alguno de estos
-SELECT P.nombre,  P.precioPor as precioActual, T1.precioConDescuento, (CASE 
-                                                                       WHEN T1.precioConDescuento < 10 'Últimos disponibles'
-                                                                       WHEN T1.precioConDescuento < 20 'Pocos disponibles'
-                                                                       ELSE 'Disponible'  
-                                                                      ) AS stock
---Preferi hacer una consulta en el From para no llenar tanto la externa para filtrar el descuento
-FROM Producto P, Categoria Cat, PromoEspecializada PE, (SELECT P.precioPor AS precioConDescuento
-                                                        FROM PromoEspecializada PE, Promo Pro, Categoria Cat
-                                                        --Comencé a relacionar con promoEspecializada para poder llegar hasta promo 
-                                                        --y filtrar los que cumplan con ese descuento 
-                                                        WHERE PE.productoId IN (SELECT id FROM Producto)      
-                                                        AND PE.promoId IN (SELECT id FROM Promo)
-                                                        AND PE.categoriaId IN (SELECT id FROM Categoría)
-                                                        AND Pro.tipoDescuento = 'Porcentaje'
-                                                        AND Pro.valorDescuento = 10
-                                                        --Agregue la cat a cumplir, porque sino traeria todos los productos sin importar la cat 
-                                                        AND Cat.nombre = 'Chucherías'   
-                                                      ) as T1
-WHERE P.categoriaId IN (SELECT id FROM Categoria)
---La cat aqui sera para filtrar el nombre y el precio actual
-AND Cat.nombre = 'Chucherías'
-
-
-  -- Este es el G, lo hice como varias consultas así porque no se como hacerlo como un solo select con demasiadas subconsultas anidadas :p
+ -- Este es el G, lo hice como varias consultas así porque no se como hacerlo como un solo select con demasiadas subconsultas anidadas :p
 
 
 
@@ -386,6 +334,29 @@ WHERE mc.monto_total > (SELECT AVG(monto_total) AS promedio_gasto
 
 
 
+/*H. Calcular el porcentaje de clientes que han realizado una segunda compra dentro de los 30 días 
+posteriores a su primera compra.*/
+
+--Relacion entre cliente y factura (por tener la fecha)
+--Factura(id, fechaEmisión, clienteId, subTotal, montoDescuentoTotal, porcentajeIVA, montoIVA, montoTotal)
+
+SELECT ((COUNT(DISTINC(C.id)) * 100) / SELECT (COUNT(DISTINCT(F.clienteId)) FROM Factura F) AS CantidadClientesQueRealizaron2daCompra
+FROM Factura F, (SELECT MIN(F1.fechaEmision) AS primeraCompra           --Misma nocion que para el Count y el uso de Gruop By
+                 FROM Factura F1
+                 WHERE F1.clienteId IN (SELECT id FROM Cliente)
+                 GROUP BY F1.clienteId;              --**
+
+                ) AS T1, (SELECT MIN(F2.fechaEmision) AS segundaCompra
+                          FROM Factura F2
+                          WHERE F2.clienteId IN (SELECT id FROM Cliente)
+                          AND F2.clienteId = F1.clienteId
+                          AND F2.segundaCompra > F1.primeraCompra
+                          GROUP BY F1.clienteId;
+                         ) AS T2
+JOIN Cliente C ON F.clienteId = C.id
+WHERE DATEDIFF(day, T1.primeraCompra, T2.segundaCompra) <= 30
+GROUP BY C.id
+
 -- Aquí agrego el I
 
 
@@ -394,12 +365,40 @@ SELECT TOP 10 p.nombre AS Producto, SUM(fd.cantidad) AS Vendidos_Totales, SUM(fd
                                          FROM FacturaDetalle fdsub)) * 100 AS Contribucion_total --Con esta subconsulta tenemos el total de ingresos general
 FROM 
     FacturaDetalle fd
-INNER JOIN  -- Si es INNER
-    Producto p ON fd.productoId = p.id 
-GROUP BY 
-    p.id, p.nombre
-ORDER BY 
-    Contribucion_total DESC; -- Creo que sale mejor ordenarlo así para verlo en base a quien contribuyó más
+INNER JOIN  Producto p ON fd.productoId = p.id -- Si es INNER
+GROUP BY p.id, p.nombre
+ORDER BY Contribucion_total DESC; -- Creo que sale mejor ordenarlo así para verlo en base a quien contribuyó más
 
 
 
+
+/*J.  Un  cliente  desea  comprar  productos  al  mayor  y  solicitó  un  presupuesto. Los productos a mostrar 
+deben  ser  de  categoría  Chucherías.  Listar  nombre,  precio  actual,  precio con descuento del 10% 
+por ser al mayor y para el stock se debe imprimir “Últimos disponibles” si es menor de 10, “Pocos 
+disponibles” si es menor de 20 y “Disponible” de caso contrario. */
+
+                                                                      --Si el precio con descuento resultó alguno de estos
+SELECT P.nombre,  P.precioPor as precioActual, T1.precioConDescuento, (CASE 
+                                                                       WHEN T1.precioConDescuento < 10 'Últimos disponibles'
+                                                                       WHEN T1.precioConDescuento < 20 'Pocos disponibles'
+                                                                       ELSE 'Disponible'  
+                                                                      ) AS stock
+--Preferi hacer una consulta en el From para no llenar tanto la externa para filtrar el descuento
+FROM Producto P, Categoria Cat, PromoEspecializada PE, (SELECT P.precioPor AS precioConDescuento
+                                                        FROM PromoEspecializada PE, Promo Pro, Categoria Cat
+                                                        --Comencé a relacionar con promoEspecializada para poder llegar hasta promo 
+                                                        --y filtrar los que cumplan con ese descuento 
+                                                        WHERE PE.productoId IN (SELECT id FROM Producto)      
+                                                        AND PE.promoId IN (SELECT id FROM Promo)
+                                                        AND PE.categoriaId IN (SELECT id FROM Categoría)
+                                                        AND Pro.tipoDescuento = 'Porcentaje'
+                                                        AND Pro.valorDescuento = 10
+                                                        --Agregue la cat a cumplir, porque sino traeria todos los productos sin importar la cat 
+                                                        AND Cat.nombre = 'Chucherías'   
+                                                      ) as T1
+WHERE P.categoriaId IN (SELECT id FROM Categoria)
+--La cat aqui sera para filtrar el nombre y el precio actual
+AND Cat.nombre = 'Chucherías'
+
+
+ 
