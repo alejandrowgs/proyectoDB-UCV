@@ -328,3 +328,54 @@ GROUP BY
     p.id, p.nombre
 ORDER BY 
     Contribucion_total DESC; -- Creo que sale mejor ordenarlo así para verlo en base a quien contribuyó más
+
+
+
+-- Este es el G, lo hice como varias consultas así porque no se como hacerlo como un solo select con demasiadas subconsultas anidadas :p
+
+
+
+WITH OrdenesRecientes AS (SELECT id AS ordenId, clienteId
+    FROM OrdenOnline
+    WHERE fechaCreacion >= DATEADD(MONTH, -6, GETDATE())), --Viendolo paso por paso este es el a del enunciado
+
+ProductosOrden AS (SELECT orre.ordenId, orre.clienteId, p.id AS productoId, c.nombre AS categoria
+    FROM OrdenesRecientes orre
+    INNER JOIN OrdenDetalle od ON orre.ordenId = od.ordenId
+    INNER JOIN Producto p ON od.productoId = p.id
+    INNER JOIN Categoria c ON p.categoriaId = c.id), --Revisar si esto de verdad da los productos y sus categorias
+
+OrdenesValidas AS (SELECT ordenId, clienteId
+    FROM ProductosOrden
+    WHERE categoria IN ('Electrónica', 'Hogar')  --Las categorías del enunciado, revisar si en los insert están. EDIT: Faltaba electrónica xd
+    GROUP BY ordenId, clienteId
+    HAVING 
+        COUNT(DISTINCT CASE WHEN categoria = 'Electrónica' THEN productoId END) >= 1
+        AND COUNT(DISTINCT CASE WHEN categoria = 'Hogar' THEN productoId END) >= 1), --Estos having estan cheveres porque nos asegura que hay al menos 1 item
+
+
+OrdenesConTarjeta AS (SELECT orre.ordenId, orre.clienteId
+    FROM OrdenesRecientes orre
+    INNER JOIN Pago p ON orre.ordenId = p.facturaId
+    INNER JOIN FormaPago fp ON p.metodoPagoId = fp.id
+    WHERE fp.nombre = 'Tarjeta de credito'), -- El tipo de pago, verificar si está en el insert
+
+MontoCliente AS (SELECT ov.clienteId, SUM(od.cantidad * od.precioPor) AS monto_total
+    FROM OrdenesValidas ov
+    INNER JOIN OrdenDetalle od ON ov.ordenId = od.ordenId
+    GROUP BY ov.clienteId) --Monto total gastado por cliente y toma en cuenta las ordenes validas
+
+
+SELECT mc.clienteId, mc.monto_total
+FROM MontoCliente mc
+WHERE mc.monto_total > (SELECT AVG(monto_total) AS promedio_gasto
+        FROM (SELECT orre.clienteId, SUM(od.cantidad * od.precioPor) AS monto_total
+            FROM OrdenesRecientes orre
+            INNER JOIN OrdenDetalle od ON orre.ordenId = od.ordenId
+            GROUP BY orre.clienteId) AS gasto_clientes)
+    AND mc.clienteId IN (SELECT ov.clienteId
+        FROM OrdenesValidas ov
+        INNER JOIN OrdenesConTarjeta oct ON ov.ordenId = oct.ordenId
+        GROUP BY ov.clienteId
+        HAVING 
+            COUNT(DISTINCT ov.ordenId) >= 3); --Sufrí con esto anidado más de lo que quiero admitir, parece que ya funciona
