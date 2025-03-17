@@ -290,7 +290,7 @@ posteriores a su primera compra.*/
 --Relacion entre cliente y factura (por tener la fecha)
 --Factura(id, fechaEmisión, clienteId, subTotal, montoDescuentoTotal, porcentajeIVA, montoIVA, montoTotal)
 
-SELECT ((COUNT(DISTINC(C.id)) * 100) / SELECT (DISTINCT(F.clienteId)) FROM Factura F) AS CantidadClientesQueRealizaron2daCompra
+SELECT ((COUNT(DISTINC(C.id)) * 100) / SELECT (COUNT(DISTINCT(F.clienteId)) FROM Factura F) AS CantidadClientesQueRealizaron2daCompra
 FROM Factura F, (SELECT MIN(F1.fechaEmision) AS primeraCompra           --Misma nocion que para el Count y el uso de Gruop By
                  FROM Factura F1
                  WHERE F1.clienteId IN (SELECT id FROM Cliente)
