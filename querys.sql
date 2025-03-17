@@ -284,6 +284,30 @@ PRINT @PrintMessage;
 GO
 */
 
+/*H. Calcular el porcentaje de clientes que han realizado una segunda compra dentro de los 30 días 
+posteriores a su primera compra.*/
+
+--Relacion entre cliente y factura (por tener la fecha)
+--Factura(id, fechaEmisión, clienteId, subTotal, montoDescuentoTotal, porcentajeIVA, montoIVA, montoTotal)
+
+SELECT ((COUNT(DISTINC(C.id)) * 100) / SELECT (DISTINCT(F.clienteId)) FROM Factura F) AS CantidadClientesQueRealizaron2daCompra
+FROM Factura F, (SELECT MIN(F1.fechaEmision) AS primeraCompra           --Misma nocion que para el Count y el uso de Gruop By
+                 FROM Factura F1
+                 WHERE F1.clienteId IN (SELECT id FROM Cliente)
+                 GROUP BY F1.clienteId;              --**
+
+                ) AS T1, (SELECT MIN(F2.fechaEmision) AS segundaCompra
+                          FROM Factura F2
+                          WHERE F2.clienteId IN (SELECT id FROM Cliente)
+                          AND F2.clienteId = F1.clienteId
+                          AND F2.segundaCompra > F1.primeraCompra
+                          GROUP BY F1.clienteId;
+                         ) AS T2
+JOIN Cliente C ON F.clienteId = C.id
+WHERE DATEDIFF(day, T1.primeraCompra, T2.segundaCompra) <= 30
+GROUP BY C.id
+HAVING COUNT(*) > 1           --Me aseguro que el cliente tiene al menos 2 compras para poder calcular todo
+ 
 
 /*J.  Un  cliente  desea  comprar  productos  al  mayor  y  solicitó  un  presupuesto. Los productos a mostrar 
 deben  ser  de  categoría  Chucherías.  Listar  nombre,  precio  actual,  precio con descuento del 10% 
