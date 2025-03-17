@@ -306,8 +306,6 @@ FROM Factura F, (SELECT MIN(F1.fechaEmision) AS primeraCompra           --Misma 
 JOIN Cliente C ON F.clienteId = C.id
 WHERE DATEDIFF(day, T1.primeraCompra, T2.segundaCompra) <= 30
 GROUP BY C.id
-HAVING COUNT(*) > 1           --Me aseguro que el cliente tiene al menos 2 compras para poder calcular todo
- 
 
 /*J.  Un  cliente  desea  comprar  productos  al  mayor  y  solicitó  un  presupuesto. Los productos a mostrar 
 deben  ser  de  categoría  Chucherías.  Listar  nombre,  precio  actual,  precio con descuento del 10% 
