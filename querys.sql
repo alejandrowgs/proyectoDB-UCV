@@ -314,24 +314,7 @@ WHERE P.categoriaId IN (SELECT id FROM Categoria)
 AND Cat.nombre = 'Chucherías'
 
 
--- Aquí agrego el I
-
-
-SELECT TOP 10 p.nombre AS Producto, SUM(fd.cantidad) AS Vendidos_Totales, SUM(fd.cantidad * fd.precioPor) AS Ingresos_Generados,
-    (SUM(fd.cantidad * fd.precioPor) / (SELECT SUM(fdsub.cantidad * fdsub.precioPor) 
-                                         FROM FacturaDetalle fdsub)) * 100 AS Contribucion_total --Con esta subconsulta tenemos el total de ingresos general
-FROM 
-    FacturaDetalle fd
-INNER JOIN  -- Si es INNER
-    Producto p ON fd.productoId = p.id 
-GROUP BY 
-    p.id, p.nombre
-ORDER BY 
-    Contribucion_total DESC; -- Creo que sale mejor ordenarlo así para verlo en base a quien contribuyó más
-
-
-
--- Este es el G, lo hice como varias consultas así porque no se como hacerlo como un solo select con demasiadas subconsultas anidadas :p
+  -- Este es el G, lo hice como varias consultas así porque no se como hacerlo como un solo select con demasiadas subconsultas anidadas :p
 
 
 
@@ -379,3 +362,23 @@ WHERE mc.monto_total > (SELECT AVG(monto_total) AS promedio_gasto
         GROUP BY ov.clienteId
         HAVING 
             COUNT(DISTINCT ov.ordenId) >= 3); --Sufrí con esto anidado más de lo que quiero admitir, parece que ya funciona
+
+
+
+-- Aquí agrego el I
+
+
+SELECT TOP 10 p.nombre AS Producto, SUM(fd.cantidad) AS Vendidos_Totales, SUM(fd.cantidad * fd.precioPor) AS Ingresos_Generados,
+    (SUM(fd.cantidad * fd.precioPor) / (SELECT SUM(fdsub.cantidad * fdsub.precioPor) 
+                                         FROM FacturaDetalle fdsub)) * 100 AS Contribucion_total --Con esta subconsulta tenemos el total de ingresos general
+FROM 
+    FacturaDetalle fd
+INNER JOIN  -- Si es INNER
+    Producto p ON fd.productoId = p.id 
+GROUP BY 
+    p.id, p.nombre
+ORDER BY 
+    Contribucion_total DESC; -- Creo que sale mejor ordenarlo así para verlo en base a quien contribuyó más
+
+
+
